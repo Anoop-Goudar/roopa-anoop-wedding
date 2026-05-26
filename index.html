@@ -1636,135 +1636,55 @@ Quick reference for what to change in this file.
      Hidden in Classic theme; shown only in Arishina Kunkuma theme
      ============================================================ -->
 <div class="ak-divider" aria-hidden="true">
-  <svg viewBox="0 0 480 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bowl of arishina and kunkuma with marigolds and coconut">
+  <svg viewBox="0 0 500 275" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two bowls of arishina and kunkuma on a jasmine flower bed with coconut">
     <defs>
-      <!-- Clip to inner bowl ellipse -->
-      <clipPath id="akd-bowl">
-        <ellipse cx="240" cy="128" rx="63" ry="35"/>
-      </clipPath>
-      <!-- Left half (turmeric yellow) -->
-      <clipPath id="akd-left">
-        <rect x="0" y="0" width="240" height="230"/>
-      </clipPath>
-      <!-- Right half (kumkum red) -->
-      <clipPath id="akd-right">
-        <rect x="240" y="0" width="240" height="230"/>
-      </clipPath>
+      <!-- Jasmine flower template: 5 petals around a yellow centre -->
+      <g id="akd-j">
+        <ellipse cx="0" cy="-7" rx="4.8" ry="2.6" fill="#FFF6EE"/>
+        <ellipse cx="0" cy="-7" rx="4.8" ry="2.6" fill="#FFF6EE" transform="rotate(72,0,0)"/>
+        <ellipse cx="0" cy="-7" rx="4.8" ry="2.6" fill="#FFF6EE" transform="rotate(144,0,0)"/>
+        <ellipse cx="0" cy="-7" rx="4.8" ry="2.6" fill="#FFF6EE" transform="rotate(216,0,0)"/>
+        <ellipse cx="0" cy="-7" rx="4.8" ry="2.6" fill="#FFF6EE" transform="rotate(288,0,0)"/>
+        <circle r="2.8" fill="#F0D040"/>
+      </g>
     </defs>
 
-    <!-- Scattered marigold petals -->
-    <ellipse cx="22"  cy="95"  rx="7"   ry="3.5" fill="#E07818" transform="rotate(-28,22,95)"   opacity=".72"/>
-    <ellipse cx="40"  cy="72"  rx="6"   ry="3"   fill="#F0C040" transform="rotate(15,40,72)"    opacity=".68"/>
-    <ellipse cx="14"  cy="148" rx="7"   ry="3.5" fill="#E07818" transform="rotate(42,14,148)"   opacity=".62"/>
-    <ellipse cx="58"  cy="188" rx="6"   ry="3"   fill="#F0C040" transform="rotate(-12,58,188)"  opacity=".60"/>
-    <ellipse cx="132" cy="52"  rx="6"   ry="3"   fill="#E07818" transform="rotate(-22,132,52)"  opacity=".62"/>
-    <ellipse cx="166" cy="207" rx="7"   ry="3.5" fill="#F0C040" transform="rotate(28,166,207)"  opacity=".58"/>
-    <ellipse cx="315" cy="210" rx="7"   ry="3.5" fill="#E07818" transform="rotate(-18,315,210)" opacity=".58"/>
-    <ellipse cx="350" cy="58"  rx="6"   ry="3"   fill="#F0C040" transform="rotate(22,350,58)"   opacity=".62"/>
-    <ellipse cx="442" cy="108" rx="7"   ry="3.5" fill="#E07818" transform="rotate(38,442,108)"  opacity=".68"/>
-    <ellipse cx="458" cy="158" rx="6"   ry="3"   fill="#F0C040" transform="rotate(-32,458,158)" opacity=".62"/>
-    <ellipse cx="192" cy="46"  rx="5"   ry="2.5" fill="#F0C040" transform="rotate(10,192,46)"   opacity=".52"/>
-    <ellipse cx="290" cy="46"  rx="5"   ry="2.5" fill="#E07818" transform="rotate(-8,290,46)"   opacity=".52"/>
+    <!-- ── Green leaves scattered in jasmine bed ── -->
+    <ellipse cx="38"  cy="218" rx="10" ry="4"   fill="#4A7C3A" transform="rotate(28,38,218)"   opacity=".78"/>
+    <ellipse cx="92"  cy="232" rx="11" ry="4.5" fill="#5A8E48" transform="rotate(-18,92,232)"  opacity=".74"/>
+    <ellipse cx="172" cy="222" rx="9"  ry="4"   fill="#4A7C3A" transform="rotate(38,172,222)"  opacity=".78"/>
+    <ellipse cx="220" cy="240" rx="10" ry="4"   fill="#5A8E48" transform="rotate(-22,220,240)" opacity=".74"/>
+    <ellipse cx="250" cy="196" rx="9"  ry="3.5" fill="#4A7C3A" transform="rotate(14,250,196)"  opacity=".78"/>
+    <ellipse cx="282" cy="225" rx="11" ry="4.5" fill="#5A8E48" transform="rotate(-35,282,225)" opacity=".74"/>
+    <ellipse cx="318" cy="240" rx="10" ry="4"   fill="#4A7C3A" transform="rotate(22,318,240)"  opacity=".78"/>
+    <ellipse cx="396" cy="230" rx="11" ry="4.5" fill="#5A8E48" transform="rotate(18,396,230)"  opacity=".74"/>
+    <ellipse cx="458" cy="217" rx="10" ry="4"   fill="#4A7C3A" transform="rotate(-24,458,217)" opacity=".78"/>
+    <ellipse cx="128" cy="255" rx="9"  ry="3.5" fill="#4A7C3A" transform="rotate(30,128,255)"  opacity=".74"/>
+    <ellipse cx="372" cy="255" rx="10" ry="4"   fill="#5A8E48" transform="rotate(-15,372,255)" opacity=".78"/>
+    <ellipse cx="488" cy="240" rx="9"  ry="3.5" fill="#4A7C3A" transform="rotate(8,488,240)"   opacity=".72"/>
 
-    <!-- Jasmine buds near bowl -->
-    <ellipse cx="178" cy="153" rx="4.5" ry="7.5" fill="#FFF9EE" stroke="#E8D070" stroke-width=".9" transform="rotate(-22,178,153)"/>
-    <ellipse cx="191" cy="164" rx="4.5" ry="7.5" fill="#FFF9EE" stroke="#E8D070" stroke-width=".9" transform="rotate(7,191,164)"/>
-    <ellipse cx="184" cy="169" rx="4"   ry="7"   fill="#FFF2DC" stroke="#E8D070" stroke-width=".8" transform="rotate(-4,184,169)"/>
-    <ellipse cx="298" cy="156" rx="4.5" ry="7.5" fill="#FFF9EE" stroke="#E8D070" stroke-width=".9" transform="rotate(20,298,156)"/>
-    <ellipse cx="286" cy="166" rx="4.5" ry="7.5" fill="#FFF9EE" stroke="#E8D070" stroke-width=".9" transform="rotate(-9,286,166)"/>
-    <ellipse cx="294" cy="171" rx="4"   ry="7"   fill="#FFF2DC" stroke="#E8D070" stroke-width=".8" transform="rotate(4,294,171)"/>
+    <!-- ── Jasmine flower bed (mallige) ── -->
+    <!-- Row 1  y=165 -->
+    <use href="#akd-j" transform="translate(20,165)"/> <use href="#akd-j" transform="translate(42,165)"/> <use href="#akd-j" transform="translate(64,165)"/> <use href="#akd-j" transform="translate(86,165)"/> <use href="#akd-j" transform="translate(108,165)"/> <use href="#akd-j" transform="translate(130,165)"/> <use href="#akd-j" transform="translate(152,165)"/> <use href="#akd-j" transform="translate(174,165)"/> <use href="#akd-j" transform="translate(196,165)"/> <use href="#akd-j" transform="translate(218,165)"/> <use href="#akd-j" transform="translate(240,165)"/> <use href="#akd-j" transform="translate(262,165)"/> <use href="#akd-j" transform="translate(284,165)"/> <use href="#akd-j" transform="translate(306,165)"/> <use href="#akd-j" transform="translate(328,165)"/> <use href="#akd-j" transform="translate(350,165)"/> <use href="#akd-j" transform="translate(372,165)"/> <use href="#akd-j" transform="translate(394,165)"/> <use href="#akd-j" transform="translate(416,165)"/> <use href="#akd-j" transform="translate(438,165)"/> <use href="#akd-j" transform="translate(460,165)"/> <use href="#akd-j" transform="translate(482,165)"/>
+    <!-- Row 2  y=188 -->
+    <use href="#akd-j" transform="translate(31,188)"/> <use href="#akd-j" transform="translate(53,188)"/> <use href="#akd-j" transform="translate(75,188)"/> <use href="#akd-j" transform="translate(97,188)"/> <use href="#akd-j" transform="translate(119,188)"/> <use href="#akd-j" transform="translate(141,188)"/> <use href="#akd-j" transform="translate(163,188)"/> <use href="#akd-j" transform="translate(185,188)"/> <use href="#akd-j" transform="translate(207,188)"/> <use href="#akd-j" transform="translate(229,188)"/> <use href="#akd-j" transform="translate(251,188)"/> <use href="#akd-j" transform="translate(273,188)"/> <use href="#akd-j" transform="translate(295,188)"/> <use href="#akd-j" transform="translate(317,188)"/> <use href="#akd-j" transform="translate(339,188)"/> <use href="#akd-j" transform="translate(361,188)"/> <use href="#akd-j" transform="translate(383,188)"/> <use href="#akd-j" transform="translate(405,188)"/> <use href="#akd-j" transform="translate(427,188)"/> <use href="#akd-j" transform="translate(449,188)"/> <use href="#akd-j" transform="translate(471,188)"/>
+    <!-- Row 3  y=211 -->
+    <use href="#akd-j" transform="translate(20,211)"/> <use href="#akd-j" transform="translate(42,211)"/> <use href="#akd-j" transform="translate(64,211)"/> <use href="#akd-j" transform="translate(86,211)"/> <use href="#akd-j" transform="translate(108,211)"/> <use href="#akd-j" transform="translate(130,211)"/> <use href="#akd-j" transform="translate(152,211)"/> <use href="#akd-j" transform="translate(174,211)"/> <use href="#akd-j" transform="translate(196,211)"/> <use href="#akd-j" transform="translate(218,211)"/> <use href="#akd-j" transform="translate(240,211)"/> <use href="#akd-j" transform="translate(262,211)"/> <use href="#akd-j" transform="translate(284,211)"/> <use href="#akd-j" transform="translate(306,211)"/> <use href="#akd-j" transform="translate(328,211)"/> <use href="#akd-j" transform="translate(350,211)"/> <use href="#akd-j" transform="translate(372,211)"/> <use href="#akd-j" transform="translate(394,211)"/> <use href="#akd-j" transform="translate(416,211)"/> <use href="#akd-j" transform="translate(438,211)"/> <use href="#akd-j" transform="translate(460,211)"/> <use href="#akd-j" transform="translate(482,211)"/>
+    <!-- Row 4  y=234 -->
+    <use href="#akd-j" transform="translate(31,234)"/> <use href="#akd-j" transform="translate(53,234)"/> <use href="#akd-j" transform="translate(75,234)"/> <use href="#akd-j" transform="translate(97,234)"/> <use href="#akd-j" transform="translate(119,234)"/> <use href="#akd-j" transform="translate(141,234)"/> <use href="#akd-j" transform="translate(163,234)"/> <use href="#akd-j" transform="translate(185,234)"/> <use href="#akd-j" transform="translate(207,234)"/> <use href="#akd-j" transform="translate(229,234)"/> <use href="#akd-j" transform="translate(251,234)"/> <use href="#akd-j" transform="translate(273,234)"/> <use href="#akd-j" transform="translate(295,234)"/> <use href="#akd-j" transform="translate(317,234)"/> <use href="#akd-j" transform="translate(339,234)"/> <use href="#akd-j" transform="translate(361,234)"/> <use href="#akd-j" transform="translate(383,234)"/> <use href="#akd-j" transform="translate(405,234)"/> <use href="#akd-j" transform="translate(427,234)"/> <use href="#akd-j" transform="translate(449,234)"/> <use href="#akd-j" transform="translate(471,234)"/>
+    <!-- Row 5  y=257 -->
+    <use href="#akd-j" transform="translate(20,257)"/> <use href="#akd-j" transform="translate(42,257)"/> <use href="#akd-j" transform="translate(64,257)"/> <use href="#akd-j" transform="translate(86,257)"/> <use href="#akd-j" transform="translate(108,257)"/> <use href="#akd-j" transform="translate(130,257)"/> <use href="#akd-j" transform="translate(152,257)"/> <use href="#akd-j" transform="translate(174,257)"/> <use href="#akd-j" transform="translate(196,257)"/> <use href="#akd-j" transform="translate(218,257)"/> <use href="#akd-j" transform="translate(240,257)"/> <use href="#akd-j" transform="translate(262,257)"/> <use href="#akd-j" transform="translate(284,257)"/> <use href="#akd-j" transform="translate(306,257)"/> <use href="#akd-j" transform="translate(328,257)"/> <use href="#akd-j" transform="translate(350,257)"/> <use href="#akd-j" transform="translate(372,257)"/> <use href="#akd-j" transform="translate(394,257)"/> <use href="#akd-j" transform="translate(416,257)"/> <use href="#akd-j" transform="translate(438,257)"/> <use href="#akd-j" transform="translate(460,257)"/> <use href="#akd-j" transform="translate(482,257)"/>
 
-    <!-- Large marigold — LEFT (cx=82 cy=124) -->
-    <g transform="translate(82,124)">
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#E07818" transform="rotate(0)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#EE8E28" transform="rotate(30)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#E07818" transform="rotate(60)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#EE8E28" transform="rotate(90)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#E07818" transform="rotate(120)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#EE8E28" transform="rotate(150)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#E07818" transform="rotate(180)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#EE8E28" transform="rotate(210)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#E07818" transform="rotate(240)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#EE8E28" transform="rotate(270)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#E07818" transform="rotate(300)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#EE8E28" transform="rotate(330)"/>
-      <ellipse cx="0" cy="-15" rx="9"  ry="4.5" fill="#F5A030" transform="rotate(15)"/>
-      <ellipse cx="0" cy="-15" rx="9"  ry="4.5" fill="#F5A030" transform="rotate(75)"/>
-      <ellipse cx="0" cy="-15" rx="9"  ry="4.5" fill="#F5A030" transform="rotate(135)"/>
-      <ellipse cx="0" cy="-15" rx="9"  ry="4.5" fill="#F5A030" transform="rotate(195)"/>
-      <ellipse cx="0" cy="-15" rx="9"  ry="4.5" fill="#F5A030" transform="rotate(255)"/>
-      <ellipse cx="0" cy="-15" rx="9"  ry="4.5" fill="#F5A030" transform="rotate(315)"/>
-      <circle r="9"  fill="#EFBE20"/>
-      <circle r="6"  fill="#D4A010"/>
-      <circle r="3"  fill="#C49000"/>
-    </g>
-
-    <!-- Large marigold — RIGHT (cx=398 cy=124) -->
-    <g transform="translate(398,124)">
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#EE8E28" transform="rotate(15)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#E07818" transform="rotate(45)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#EE8E28" transform="rotate(75)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#E07818" transform="rotate(105)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#EE8E28" transform="rotate(135)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#E07818" transform="rotate(165)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#EE8E28" transform="rotate(195)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#E07818" transform="rotate(225)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#EE8E28" transform="rotate(255)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#E07818" transform="rotate(285)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#EE8E28" transform="rotate(315)"/>
-      <ellipse cx="0" cy="-22" rx="12" ry="5.5" fill="#E07818" transform="rotate(345)"/>
-      <ellipse cx="0" cy="-15" rx="9"  ry="4.5" fill="#F5A030" transform="rotate(0)"/>
-      <ellipse cx="0" cy="-15" rx="9"  ry="4.5" fill="#F5A030" transform="rotate(60)"/>
-      <ellipse cx="0" cy="-15" rx="9"  ry="4.5" fill="#F5A030" transform="rotate(120)"/>
-      <ellipse cx="0" cy="-15" rx="9"  ry="4.5" fill="#F5A030" transform="rotate(180)"/>
-      <ellipse cx="0" cy="-15" rx="9"  ry="4.5" fill="#F5A030" transform="rotate(240)"/>
-      <ellipse cx="0" cy="-15" rx="9"  ry="4.5" fill="#F5A030" transform="rotate(300)"/>
-      <circle r="9"  fill="#EFBE20"/>
-      <circle r="6"  fill="#D4A010"/>
-      <circle r="3"  fill="#C49000"/>
-    </g>
-
-    <!-- Small marigold — near bowl left (cx=156 cy=180) -->
-    <g transform="translate(156,180)" opacity=".88">
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#E07818" transform="rotate(0)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#EE8E28" transform="rotate(45)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#E07818" transform="rotate(90)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#EE8E28" transform="rotate(135)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#E07818" transform="rotate(180)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#EE8E28" transform="rotate(225)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#E07818" transform="rotate(270)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#EE8E28" transform="rotate(315)"/>
-      <circle r="6.5" fill="#EFBE20"/>
-      <circle r="4"   fill="#D4A010"/>
-    </g>
-
-    <!-- Small marigold — near bowl right (cx=324 cy=180) -->
-    <g transform="translate(324,180)" opacity=".88">
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#EE8E28" transform="rotate(22)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#E07818" transform="rotate(67)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#EE8E28" transform="rotate(112)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#E07818" transform="rotate(157)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#EE8E28" transform="rotate(202)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#E07818" transform="rotate(247)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#EE8E28" transform="rotate(292)"/>
-      <ellipse cx="0" cy="-16" rx="9" ry="4" fill="#E07818" transform="rotate(337)"/>
-      <circle r="6.5" fill="#EFBE20"/>
-      <circle r="4"   fill="#D4A010"/>
-    </g>
-
-    <!-- Coconut — top right (cx=428 cy=68) -->
-    <g transform="translate(428,68)">
+    <!-- ── Coconut — top right ── -->
+    <g transform="translate(435,62)">
       <ellipse cx="0" cy="0" rx="29" ry="25" fill="#8B5E3C"/>
       <ellipse cx="6"  cy="4" rx="20" ry="16" fill="#6B3E20" opacity=".32"/>
-      <!-- husk fibre lines -->
       <path d="M-26,-7 q8,-7 16,-2"  stroke="#5C3D1A" stroke-width="1.3" stroke-linecap="round" fill="none"/>
       <path d="M-28,4  q10,-4 18,2"  stroke="#5C3D1A" stroke-width="1.3" stroke-linecap="round" fill="none"/>
       <path d="M-24,14 q8,3 15,0"    stroke="#5C3D1A" stroke-width="1.3" stroke-linecap="round" fill="none"/>
-      <!-- three eyes at base -->
       <circle cx="-3" cy="19"   r="3.8" fill="#2A1500"/>
       <circle cx="5"  cy="21"   r="3.3" fill="#2A1500"/>
       <circle cx="1"  cy="23.5" r="2.8" fill="#1A0E00"/>
-      <!-- green fibre tuft -->
       <path d="M0,-24 q-7,-12 -16,-20" stroke="#2E7D32" stroke-width="2.2" stroke-linecap="round" fill="none"/>
       <path d="M0,-24 q-2,-15  0,-27"  stroke="#388E3C" stroke-width="2.2" stroke-linecap="round" fill="none"/>
       <path d="M0,-24 q6,-13  12,-20"  stroke="#2E7D32" stroke-width="2.2" stroke-linecap="round" fill="none"/>
@@ -1772,33 +1692,29 @@ Quick reference for what to change in this file.
       <path d="M0,-24 q-14,-8 -22,-12" stroke="#43A047" stroke-width="1.8" stroke-linecap="round" fill="none"/>
     </g>
 
-    <!-- BOWL -->
-    <!-- Shadow -->
-    <ellipse cx="240" cy="178" rx="75" ry="9" fill="rgba(120,60,0,.09)"/>
-    <!-- Body depth (3-D side below rim) -->
-    <path d="M164,122 q0,52 76,52 q76,0 76,-52" fill="#9A7010" opacity=".42"/>
-    <!-- Outer brass rim -->
-    <ellipse cx="240" cy="122" rx="79" ry="44" fill="#C9A84C"/>
-    <!-- Powder fill: inner bowl clipped to inner ellipse, split left/right -->
-    <g clip-path="url(#akd-bowl)">
-      <g clip-path="url(#akd-left)">
-        <rect x="0" y="0" width="480" height="230" fill="#E8BA2A"/>
-        <!-- mound highlight -->
-        <ellipse cx="214" cy="122" rx="32" ry="19" fill="#F4CC40" opacity=".50"/>
-      </g>
-      <g clip-path="url(#akd-right)">
-        <rect x="0" y="0" width="480" height="230" fill="#CC3300"/>
-        <!-- mound highlight -->
-        <ellipse cx="266" cy="122" rx="32" ry="19" fill="#E84820" opacity=".42"/>
-      </g>
-    </g>
-    <!-- Rim outline and decoration -->
-    <ellipse cx="240" cy="122" rx="79" ry="44" fill="none" stroke="#A6862F" stroke-width="1.8"/>
-    <ellipse cx="240" cy="122" rx="73" ry="40" fill="none" stroke="#B8960A" stroke-width=".8" stroke-dasharray="5,3" opacity=".52"/>
-    <!-- Brass sheen highlight -->
-    <ellipse cx="218" cy="108" rx="20" ry="8" fill="rgba(255,240,150,.28)" transform="rotate(-18,218,108)"/>
-    <!-- Dividing line between powders -->
-    <line x1="240" y1="88" x2="240" y2="162" stroke="rgba(255,255,255,.28)" stroke-width="1.5"/>
+    <!-- ── Left bowl: Arishina (Turmeric — yellow) ── -->
+    <ellipse cx="145" cy="200" rx="80" ry="10" fill="rgba(100,50,0,.10)"/>
+    <path d="M68,148 C68,202 222,202 222,148" fill="#7A5010" opacity=".55"/>
+    <ellipse cx="145" cy="148" rx="73" ry="45" fill="#9A7420"/>
+    <ellipse cx="145" cy="148" rx="65" ry="39" fill="#E8A820"/>
+    <ellipse cx="145" cy="130" rx="52" ry="33" fill="#EBB030"/>
+    <ellipse cx="132" cy="122" rx="27" ry="16" fill="#F5CC38" opacity=".65"/>
+    <ellipse cx="145" cy="148" rx="77" ry="48" fill="none" stroke="#C9A84C" stroke-width="7"/>
+    <ellipse cx="145" cy="148" rx="70" ry="42" fill="none" stroke="#D4B558" stroke-width="1.5" opacity=".70"/>
+    <ellipse cx="145" cy="148" rx="77" ry="48" fill="none" stroke="#9A7818" stroke-width="1.5"/>
+    <ellipse cx="115" cy="132" rx="23" ry="10" fill="rgba(255,240,150,.40)" transform="rotate(-20,115,132)"/>
+
+    <!-- ── Right bowl: Kunkuma (Vermilion — red) ── -->
+    <ellipse cx="355" cy="200" rx="80" ry="10" fill="rgba(100,50,0,.10)"/>
+    <path d="M278,148 C278,202 432,202 432,148" fill="#7A5010" opacity=".55"/>
+    <ellipse cx="355" cy="148" rx="73" ry="45" fill="#801810"/>
+    <ellipse cx="355" cy="148" rx="65" ry="39" fill="#CC3300"/>
+    <ellipse cx="355" cy="130" rx="52" ry="33" fill="#C83200"/>
+    <ellipse cx="342" cy="122" rx="27" ry="16" fill="#E84020" opacity=".60"/>
+    <ellipse cx="355" cy="148" rx="77" ry="48" fill="none" stroke="#C9A84C" stroke-width="7"/>
+    <ellipse cx="355" cy="148" rx="70" ry="42" fill="none" stroke="#D4B558" stroke-width="1.5" opacity=".70"/>
+    <ellipse cx="355" cy="148" rx="77" ry="48" fill="none" stroke="#9A7818" stroke-width="1.5"/>
+    <ellipse cx="325" cy="132" rx="23" ry="10" fill="rgba(255,240,150,.40)" transform="rotate(-20,325,132)"/>
   </svg>
   <p class="ak-divider-caption kn">ಅರಿಶಿನ &nbsp;&middot;&nbsp; ಕುಂಕುಮ</p>
 </div>
