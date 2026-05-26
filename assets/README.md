@@ -15,17 +15,20 @@ assets/
 Use the suggested filenames below so the site's `<img>` tags just work
 without further editing.
 
-### `assets/photos/gallery/` — 8 files
-| File              | Caption shown on the card |
-|-------------------|---------------------------|
-| `01-coorg.jpg`        | Coorg · 2022       |
-| `02-goa.jpg`          | Goa · 2023         |
-| `03-manali.jpg`       | Manali · 2023      |
-| `04-jaipur.jpg`       | Jaipur · 2023      |
-| `05-ladakh.jpg`       | Ladakh · 2024      |
-| `06-pondicherry.jpg`  | Pondicherry · 2024 |
-| `07-singapore.jpg`    | Singapore · 2025   |
-| `08-mysore.jpg`       | Mysore · 2025      |
+### `assets/photos/gallery/` — 11 files
+| File                          | Caption shown on the card            |
+|-------------------------------|--------------------------------------|
+| `01-adiyogi-shiva.jpg`        | Adiyogi · Coimbatore                 |
+| `02-wayanad-dam.jpg`          | Wayanad Dam · Kerala (wide)          |
+| `03-varkala.jpg`              | Varkala · Kerala                     |
+| `04-jatayu.jpg`               | Jatayu Earth's Center · Kerala (wide)|
+| `05-edakal-caves.jpg`         | Edakal Caves · Wayanad               |
+| `06-wayanad-zipline.jpg`      | Wayanad · Zipline                    |
+| `07-the-scene.jpg`            | The Scene · Bengaluru                |
+| `08-baang.jpg`                | BAANG · Ritz-Carlton                 |
+| `09-uru.jpg`                  | Uru · Bengaluru                      |
+| `10-jamming-goat.jpg`         | Jamming Goat 3.0                     |
+| `11-us.jpg`                   | Us                                   |
 
 ### `assets/photos/story/` — 6 files (timeline)
 | File                  | Milestone        |
