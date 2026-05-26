@@ -27,14 +27,18 @@ Quick reference for what to change in this file.
    - "Get Directions" link ............. search for MAPS_URL constant
 
 3. MUSIC PLAYER
-   - Replace the <audio> src ........... search for "REPLACE-MUSIC-SRC"
-   - Drop your file in repo root and use src="our-song.mp3"
+   - Drop your audio file at: assets/music/our-song.mp3
+   - It's already wired up — no edit needed if you use that path.
+   - To use a different filename, search for "REPLACE-MUSIC-SRC".
 
-4. PHOTOS
-   - Gallery placeholders .............. section#gallery .photo-card  (8 cards)
-     Swap each <div class="photo-card placeholder"> for <img src="...">
-   - Timeline placeholders ............. section#story .timeline-photo
-     Same idea — replace gradient div with <img>.
+4. PHOTOS  (see assets/README.md for filenames & sizing tips)
+   - Gallery: drop 8 photos in assets/photos/gallery/ named
+     01-coorg.jpg, 02-goa.jpg, … 08-mysore.jpg
+     Each gallery card already has the <img> wired up — just add the files.
+   - Timeline: drop 6 photos in assets/photos/story/ named
+     01-how-we-met.jpg, 02-first-trip.jpg, … 06-wedding.jpg
+     Timeline <img>s are pre-wired too.
+   - To rename/replace: search "assets/photos/" in this file.
 
 5. TIMELINE MILESTONES
    - Edit the headings/descriptions inside section#story.
@@ -437,8 +441,17 @@ Quick reference for what to change in this file.
     box-shadow: var(--shadow-card);
     border: var(--border-gold);
     overflow: hidden;
+    position: relative;
   }
   .timeline-photo svg { width: 60px; height: 60px; }
+  .timeline-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
   .ms-1 { background: linear-gradient(135deg, #B07A8E, #8E3A52); }
   .ms-2 { background: linear-gradient(135deg, #D9A86C, #8E3A52); }
   .ms-3 { background: linear-gradient(135deg, #6E2A3A, #B07A8E); }
@@ -509,8 +522,18 @@ Quick reference for what to change in this file.
     align-items: center;
     justify-content: center;
     color: rgba(255,255,255,0.9);
+    position: relative;
+    overflow: hidden;
   }
   .photo-card .img svg { width: 64px; height: 64px; }
+  .photo-card .img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
   .photo-card.tall .img { aspect-ratio: 4 / 6; }
   .photo-card.wide { grid-column: span 2; }
   .photo-card.wide .img { aspect-ratio: 16 / 11; }
@@ -573,8 +596,18 @@ Quick reference for what to change in this file.
     align-items: center;
     justify-content: center;
     color: #fff;
+    position: relative;
+    overflow: hidden;
   }
   .lightbox .lb-img svg { width: 120px; height: 120px; }
+  .lightbox .lb-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
   .lightbox .lb-caption {
     padding: 18px;
     text-align: center;
@@ -1166,10 +1199,12 @@ Quick reference for what to change in this file.
     </div>
 
     <div class="timeline">
-      <!-- REPLACE: swap the placeholder div with <img src='your-photo.jpg' alt=''> for each milestone -->
+      <!-- Photos: drop matching files in assets/photos/story/ (see assets/README.md).
+           If a file is missing, the gradient + SVG fallback stays visible. -->
       <div class="milestone">
-        <div class="timeline-photo ms-1" aria-hidden="true">
+        <div class="timeline-photo ms-1">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <img src="assets/photos/story/01-how-we-met.jpg" alt="How we met" loading="lazy" onerror="this.remove()">
         </div>
         <div class="year">2019</div>
         <h3>How We Met</h3>
@@ -1177,8 +1212,9 @@ Quick reference for what to change in this file.
       </div>
 
       <div class="milestone">
-        <div class="timeline-photo ms-2" aria-hidden="true">
+        <div class="timeline-photo ms-2">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19h18M5 19l4-8 4 6 3-5 3 7"/><circle cx="17" cy="6" r="2"/></svg>
+          <img src="assets/photos/story/02-first-trip.jpg" alt="First trip together" loading="lazy" onerror="this.remove()">
         </div>
         <div class="year">2021</div>
         <h3>First Trip Together</h3>
@@ -1186,8 +1222,9 @@ Quick reference for what to change in this file.
       </div>
 
       <div class="milestone">
-        <div class="timeline-photo ms-3" aria-hidden="true">
+        <div class="timeline-photo ms-3">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M9 14l-2 7 5-3 5 3-2-7"/></svg>
+          <img src="assets/photos/story/03-proposal.jpg" alt="The proposal" loading="lazy" onerror="this.remove()">
         </div>
         <div class="year">2024</div>
         <h3>He Proposed</h3>
@@ -1195,8 +1232,9 @@ Quick reference for what to change in this file.
       </div>
 
       <div class="milestone">
-        <div class="timeline-photo ms-4" aria-hidden="true">
+        <div class="timeline-photo ms-4">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <img src="assets/photos/story/04-she-said-yes.jpg" alt="She said yes" loading="lazy" onerror="this.remove()">
         </div>
         <div class="year">2024</div>
         <h3>She Said Yes</h3>
@@ -1204,8 +1242,9 @@ Quick reference for what to change in this file.
       </div>
 
       <div class="milestone">
-        <div class="timeline-photo ms-5" aria-hidden="true">
+        <div class="timeline-photo ms-5">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11a5 5 0 0 1 10 0v4H7z"/><path d="M5 15h14l-2 5H7z"/></svg>
+          <img src="assets/photos/story/05-reception.jpg" alt="Reception" loading="lazy" onerror="this.remove()">
         </div>
         <div class="year">8 July 2026</div>
         <h3>Reception</h3>
@@ -1213,8 +1252,9 @@ Quick reference for what to change in this file.
       </div>
 
       <div class="milestone">
-        <div class="timeline-photo ms-6" aria-hidden="true">
+        <div class="timeline-photo ms-6">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 9-9 9-9-9z"/><circle cx="12" cy="12" r="3"/></svg>
+          <img src="assets/photos/story/06-wedding.jpg" alt="The big day" loading="lazy" onerror="this.remove()">
         </div>
         <div class="year">9 July 2027</div>
         <h3>The Big Day</h3>
@@ -1237,16 +1277,17 @@ Quick reference for what to change in this file.
       <p class="subtitle">A few of the places, days, and stories we've collected along the way.</p>
     </div>
 
-    <!-- REPLACE: swap each <div class="img ..."> with <img src='your-photo.jpg' alt=''> -->
+    <!-- Photos: drop matching files in assets/photos/gallery/ (see assets/README.md).
+         If a file is missing, the gradient + SVG fallback stays visible. -->
     <div class="gallery" id="gallery-grid">
-      <div class="photo-card" data-caption="Coorg, 2022"><div class="img pc-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l5-9 4 6 3-4 6 7z"/><circle cx="17" cy="6" r="2"/></svg></div><div class="caption">Coorg · 2022</div></div>
-      <div class="photo-card wide" data-caption="Goa, 2023"><div class="img pc-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><circle cx="18" cy="6" r="2"/></svg></div><div class="caption">Goa · 2023</div></div>
-      <div class="photo-card" data-caption="Manali, 2023"><div class="img pc-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l6-10 4 6 4-7 4 11z"/></svg></div><div class="caption">Manali · 2023</div></div>
-      <div class="photo-card tall" data-caption="Jaipur, 2023"><div class="img pc-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-5 9 5v12z"/><path d="M9 21v-6h6v6"/></svg></div><div class="caption">Jaipur · 2023</div></div>
-      <div class="photo-card" data-caption="Ladakh, 2024"><div class="img pc-5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20l5-12 4 8 3-5 4 6 4-4v7z"/></svg></div><div class="caption">Ladakh · 2024</div></div>
-      <div class="photo-card" data-caption="Pondicherry, 2024"><div class="img pc-6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3"/><path d="M5 21c1.5-4 4-6 7-6s5.5 2 7 6"/></svg></div><div class="caption">Pondicherry · 2024</div></div>
-      <div class="photo-card wide" data-caption="Singapore, 2025"><div class="img pc-7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21h20"/><path d="M5 21V11l3-2 3 2v10"/><path d="M13 21V7l3-2 3 2v14"/></svg></div><div class="caption">Singapore · 2025</div></div>
-      <div class="photo-card" data-caption="Mysore, 2025"><div class="img pc-8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2 6h6l-5 4 2 7-5-4-5 4 2-7-5-4h6z"/></svg></div><div class="caption">Mysore · 2025</div></div>
+      <div class="photo-card" data-caption="Coorg, 2022"><div class="img pc-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l5-9 4 6 3-4 6 7z"/><circle cx="17" cy="6" r="2"/></svg><img src="assets/photos/gallery/01-coorg.jpg" alt="Coorg, 2022" loading="lazy" onerror="this.remove()"></div><div class="caption">Coorg · 2022</div></div>
+      <div class="photo-card wide" data-caption="Goa, 2023"><div class="img pc-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><circle cx="18" cy="6" r="2"/></svg><img src="assets/photos/gallery/02-goa.jpg" alt="Goa, 2023" loading="lazy" onerror="this.remove()"></div><div class="caption">Goa · 2023</div></div>
+      <div class="photo-card" data-caption="Manali, 2023"><div class="img pc-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l6-10 4 6 4-7 4 11z"/></svg><img src="assets/photos/gallery/03-manali.jpg" alt="Manali, 2023" loading="lazy" onerror="this.remove()"></div><div class="caption">Manali · 2023</div></div>
+      <div class="photo-card tall" data-caption="Jaipur, 2023"><div class="img pc-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-5 9 5v12z"/><path d="M9 21v-6h6v6"/></svg><img src="assets/photos/gallery/04-jaipur.jpg" alt="Jaipur, 2023" loading="lazy" onerror="this.remove()"></div><div class="caption">Jaipur · 2023</div></div>
+      <div class="photo-card" data-caption="Ladakh, 2024"><div class="img pc-5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20l5-12 4 8 3-5 4 6 4-4v7z"/></svg><img src="assets/photos/gallery/05-ladakh.jpg" alt="Ladakh, 2024" loading="lazy" onerror="this.remove()"></div><div class="caption">Ladakh · 2024</div></div>
+      <div class="photo-card" data-caption="Pondicherry, 2024"><div class="img pc-6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3"/><path d="M5 21c1.5-4 4-6 7-6s5.5 2 7 6"/></svg><img src="assets/photos/gallery/06-pondicherry.jpg" alt="Pondicherry, 2024" loading="lazy" onerror="this.remove()"></div><div class="caption">Pondicherry · 2024</div></div>
+      <div class="photo-card wide" data-caption="Singapore, 2025"><div class="img pc-7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21h20"/><path d="M5 21V11l3-2 3 2v10"/><path d="M13 21V7l3-2 3 2v14"/></svg><img src="assets/photos/gallery/07-singapore.jpg" alt="Singapore, 2025" loading="lazy" onerror="this.remove()"></div><div class="caption">Singapore · 2025</div></div>
+      <div class="photo-card" data-caption="Mysore, 2025"><div class="img pc-8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2 6h6l-5 4 2 7-5-4-5 4 2-7-5-4h6z"/></svg><img src="assets/photos/gallery/08-mysore.jpg" alt="Mysore, 2025" loading="lazy" onerror="this.remove()"></div><div class="caption">Mysore · 2025</div></div>
     </div>
   </div>
 </section>
@@ -1572,8 +1613,8 @@ Quick reference for what to change in this file.
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 4px; color: var(--gold-deep);"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3z"/></svg>
     Our Song
   </span>
-  <!-- REPLACE-MUSIC-SRC: set the src below to your audio file e.g. src="our-song.mp3" -->
-  <audio id="our-audio" preload="none" loop src=""></audio>
+  <!-- REPLACE-MUSIC-SRC: default path is assets/music/our-song.mp3 (see assets/README.md). -->
+  <audio id="our-audio" preload="metadata" loop src="assets/music/our-song.mp3"></audio>
 </div>
 
 
@@ -1864,15 +1905,13 @@ Quick reference for what to change in this file.
   const ICON_PLAY  = '<path d="M8 5v14l11-7z"/>';
   const ICON_PAUSE = '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
 
+  // If the audio file is missing (e.g. assets/music/our-song.mp3 not added yet),
+  // hide the player entirely rather than show a dead button.
+  audio.addEventListener('error', function () {
+    player.style.display = 'none';
+  });
+
   playBtn.addEventListener('click', function () {
-    if (!audio.src) {
-      // No song set yet; show a soft hint by gently shaking the player
-      player.animate(
-        [{ transform: 'translateX(0)' }, { transform: 'translateX(-6px)' }, { transform: 'translateX(6px)' }, { transform: 'translateX(0)' }],
-        { duration: 320, easing: 'ease-out' }
-      );
-      return;
-    }
     if (audio.paused) {
       audio.play().then(function () {
         player.classList.add('playing');
