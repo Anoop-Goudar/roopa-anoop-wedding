@@ -61,31 +61,56 @@ Quick reference for what to change in this file.
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Great+Vibes&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Great+Vibes&family=Noto+Serif+Kannada:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
   /* ============================================================
      Design tokens
      ============================================================ */
   :root {
-    --rose-deep:    #6E2A3A;   /* deep rose / wine */
-    --rose:         #8E3A52;   /* primary */
-    --mauve:        #B07A8E;   /* dusty mauve */
+    /* Karnataka palette: Mysore-silk red, saffron-gold, sandalwood ivory, peacock teal */
+    --rose-deep:    #6B1F2C;   /* Mysore silk red */
+    --rose:         #8E2A40;   /* primary kumkum red */
+    --mauve:        #B07A8E;
     --mauve-soft:   #E4CFD6;
-    --gold:         #C9A84C;   /* accent */
+    --gold:         #C9A84C;
     --gold-soft:    #E8D7A0;
     --gold-deep:    #A6862F;
-    --ivory:        #FAF6F0;   /* background */
-    --ivory-warm:   #F3EADA;
+    --saffron:      #D4A017;   /* turmeric saffron accent */
+    --peacock:      #0F5754;   /* peacock teal accent */
+    --leaf:         #2E7D32;   /* mango-leaf green */
+    --leaf-deep:    #1B5E20;
+    --ivory:        #FAF3E6;   /* sandalwood ivory */
+    --ivory-warm:   #F3E4C9;
     --charcoal:     #2A2024;
     --charcoal-soft:#5A4D55;
-    --shadow-soft:  0 10px 40px rgba(110, 42, 58, 0.10);
-    --shadow-card:  0 8px 28px rgba(110, 42, 58, 0.12);
-    --border-gold:  1px solid rgba(201, 168, 76, 0.45);
+    --shadow-soft:  0 10px 40px rgba(107, 31, 44, 0.10);
+    --shadow-card:  0 8px 28px rgba(107, 31, 44, 0.14);
+    --border-gold:  1px solid rgba(201, 168, 76, 0.5);
 
-    --serif: 'Cormorant Garamond', 'Times New Roman', serif;
-    --sans:  'Lato', system-ui, -apple-system, sans-serif;
-    --script:'Great Vibes', cursive;
+    --serif:  'Cormorant Garamond', 'Times New Roman', serif;
+    --sans:   'Lato', system-ui, -apple-system, sans-serif;
+    --script: 'Great Vibes', cursive;
+    --kannada:'Noto Serif Kannada', 'Cormorant Garamond', serif;
+  }
+
+  /* Kannada helper styles */
+  .kn { font-family: var(--kannada); }
+  .kn-sub {
+    font-family: var(--kannada);
+    color: var(--rose);
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin: -10px 0 18px;
+    line-height: 1.4;
+  }
+  .kn-eyebrow {
+    font-family: var(--kannada);
+    color: var(--gold-deep);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0;
+    margin-bottom: 6px;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -194,13 +219,49 @@ Quick reference for what to change in this file.
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 80px 24px 60px;
+    padding: 110px 24px 60px;
     background:
-      radial-gradient(ellipse at top, rgba(176, 122, 142, 0.22), transparent 60%),
-      radial-gradient(ellipse at bottom, rgba(201, 168, 76, 0.18), transparent 60%),
-      linear-gradient(180deg, #FBF5EC 0%, #F8EDE3 50%, #F2DDD4 100%);
+      radial-gradient(ellipse at top, rgba(212, 160, 23, 0.18), transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(107, 31, 44, 0.16), transparent 60%),
+      linear-gradient(180deg, #FBF3DE 0%, #F8E4C6 55%, #F2C8B5 100%);
     position: relative;
     overflow: hidden;
+  }
+
+  /* Mango-leaf toran (festoon) hanging from the top */
+  .toran {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 90px;
+    color: var(--leaf);
+    pointer-events: none;
+    z-index: 3;
+  }
+  .toran svg { width: 100%; height: 100%; display: block; }
+  @media (max-width: 600px) {
+    .toran { height: 60px; }
+  }
+
+  .hero .kn-names {
+    font-family: var(--kannada);
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    color: var(--rose);
+    font-weight: 500;
+    margin: 4px 0 18px;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeUp 1.6s ease 0.85s forwards;
+  }
+  .hero .kn-tagline {
+    font-family: var(--kannada);
+    font-size: clamp(0.95rem, 1.7vw, 1.1rem);
+    color: var(--charcoal-soft);
+    margin: -6px 0 22px;
+    opacity: 0;
+    animation: fadeUp 1.6s ease 1.15s forwards;
   }
   .hero::before, .hero::after {
     content: '';
@@ -229,6 +290,14 @@ Quick reference for what to change in this file.
     margin-bottom: 26px;
     opacity: 0;
     animation: fadeUp 1.4s ease 0.2s forwards;
+  }
+  .hero .blessing.kn {
+    font-family: var(--kannada);
+    text-transform: none;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+    color: var(--rose-deep);
+    font-weight: 600;
   }
 
   .hero .ornament {
@@ -1010,15 +1079,16 @@ Quick reference for what to change in this file.
   }
   .wish .floral svg { width: 26px; height: 26px; }
   .wish p {
-    font-family: var(--serif);
+    font-family: var(--serif), var(--kannada);
     font-style: italic;
     color: var(--charcoal);
     font-size: 1.1rem;
     margin: 0 0 14px;
     padding-right: 28px;
+    line-height: 1.55;
   }
   .wish .author {
-    font-family: var(--sans);
+    font-family: var(--sans), var(--kannada);
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 11px;
@@ -1056,6 +1126,20 @@ Quick reference for what to change in this file.
     font-family: var(--serif);
     color: #E4C3B7;
     margin: 0;
+  }
+  footer .kn-foot {
+    font-family: var(--kannada);
+    color: var(--gold-soft);
+    font-size: 1.3rem;
+    margin: -4px 0 8px;
+    letter-spacing: 1px;
+  }
+  footer .kn-blessing {
+    font-family: var(--kannada);
+    color: #EAD2C9;
+    font-size: 1rem;
+    margin: 12px 0 0;
+    line-height: 1.6;
   }
 
   /* ============================================================
@@ -1125,34 +1209,72 @@ Quick reference for what to change in this file.
      1. HERO
      ============================================================ -->
 <section class="hero" id="top">
+  <!-- Mango-leaf toran (festoon) — auspicious Karnataka welcome -->
+  <div class="toran" aria-hidden="true">
+    <svg viewBox="0 0 1200 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Garland thread -->
+      <path d="M0 18 Q 300 50 600 22 T 1200 18" fill="none" stroke="#A6862F" stroke-width="1.5" />
+      <!-- Repeating clusters of mango leaves + marigold beads -->
+      <g id="leaf">
+        <!-- Two mango leaves hanging down -->
+        <path d="M0 22 q -8 18 -2 36 q 6 -2 10 -10 q 2 -10 -8 -26 z" fill="#2E7D32" stroke="#1B5E20" stroke-width="0.6"/>
+        <path d="M0 22 q 8 18 2 36 q -6 -2 -10 -10 q -2 -10 8 -26 z" fill="#388E3C" stroke="#1B5E20" stroke-width="0.6"/>
+        <!-- Marigold bead at top -->
+        <circle cx="0" cy="20" r="3.5" fill="#D4A017" stroke="#A6862F" stroke-width="0.5"/>
+        <!-- Hanging tassel below leaves -->
+        <line x1="0" y1="58" x2="0" y2="74" stroke="#A6862F" stroke-width="0.8"/>
+        <circle cx="0" cy="78" r="3" fill="#C8102E" stroke="#6B1F2C" stroke-width="0.5"/>
+      </g>
+      <use href="#leaf" x="40"/>   <use href="#leaf" x="100"/>  <use href="#leaf" x="160"/>
+      <use href="#leaf" x="220"/>  <use href="#leaf" x="280"/>  <use href="#leaf" x="340"/>
+      <use href="#leaf" x="400"/>  <use href="#leaf" x="460"/>  <use href="#leaf" x="520"/>
+      <use href="#leaf" x="580"/>  <use href="#leaf" x="640"/>  <use href="#leaf" x="700"/>
+      <use href="#leaf" x="760"/>  <use href="#leaf" x="820"/>  <use href="#leaf" x="880"/>
+      <use href="#leaf" x="940"/>  <use href="#leaf" x="1000"/> <use href="#leaf" x="1060"/>
+      <use href="#leaf" x="1120"/> <use href="#leaf" x="1180"/>
+    </svg>
+  </div>
+
   <div class="hero-inner">
-    <div class="blessing">॥ Shubh Vivah ॥</div>
+    <div class="blessing kn">|| ಶುಭ ವಿವಾಹ ||</div>
 
     <div class="ornament" aria-hidden="true">
-      <svg viewBox="0 0 240 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-        <path d="M10 30 H80" />
-        <path d="M160 30 H230" />
-        <circle cx="120" cy="30" r="6" fill="currentColor" stroke="none" />
-        <circle cx="120" cy="30" r="14" />
-        <circle cx="120" cy="30" r="22" stroke-dasharray="2 4" />
-        <path d="M85 30 q 6 -10 14 -6 q -6 4 -2 12 q 8 -2 10 -10" />
-        <path d="M155 30 q -6 -10 -14 -6 q 6 4 2 12 q -8 -2 -10 -10" />
-        <circle cx="86" cy="30" r="2" fill="currentColor" stroke="none" />
-        <circle cx="154" cy="30" r="2" fill="currentColor" stroke="none" />
+      <!-- Kalasha (sacred pot) flanked by curling vines — Karnataka mantapa decor -->
+      <svg viewBox="0 0 260 70" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Side scrolls -->
+        <path d="M10 40 H70" />
+        <path d="M190 40 H250" />
+        <path d="M70 40 q 6 -14 16 -8 q -8 6 -2 14 q 10 -2 12 -12" />
+        <path d="M190 40 q -6 -14 -16 -8 q 8 6 2 14 q -10 -2 -12 -12" />
+        <circle cx="72" cy="40" r="2" fill="currentColor" stroke="none"/>
+        <circle cx="188" cy="40" r="2" fill="currentColor" stroke="none"/>
+
+        <!-- Kalasha pot -->
+        <path d="M120 56 q 0 -10 10 -10 h0 q 10 0 10 10 z" />
+        <ellipse cx="130" cy="46" rx="14" ry="3" />
+        <path d="M118 46 q 12 -8 24 0" />
+        <!-- Coconut on top -->
+        <ellipse cx="130" cy="34" rx="5" ry="6" />
+        <!-- Mango leaves around coconut -->
+        <path d="M122 40 q -8 -4 -10 -12 q 6 0 12 8" fill="currentColor" fill-opacity="0.15"/>
+        <path d="M138 40 q 8 -4 10 -12 q -6 0 -12 8" fill="currentColor" fill-opacity="0.15"/>
+        <path d="M130 36 q -3 -6 0 -14 q 3 8 0 14" />
       </svg>
     </div>
 
     <h1>Anoop <span class="amp">&amp;</span> Roopa</h1>
+    <div class="kn-names">ಅನೂಪ್ &nbsp;ಮತ್ತು&nbsp; ರೂಪಾ</div>
 
     <p class="tagline">“Together is our favourite place to be.”</p>
+    <p class="kn-tagline">“ಒಟ್ಟಿಗಿರುವುದೇ ನಮ್ಮ ನೆಚ್ಚಿನ ತಾಣ.”</p>
 
     <div class="dates">
       <div class="date-card">
-        <div class="label">Reception</div>
+        <div class="label">Reception &middot; <span class="kn">ಆರತಕ್ಷತೆ</span></div>
         <div class="date">8 July 2026</div>
       </div>
       <div class="date-card">
-        <div class="label">Wedding</div>
+        <div class="label">Wedding &middot; <span class="kn">ವಿವಾಹ</span></div>
         <div class="date">9 July 2027</div>
       </div>
     </div>
@@ -1174,6 +1296,7 @@ Quick reference for what to change in this file.
     <div class="section-heading">
       <div class="eyebrow">The Wait Begins</div>
       <h2>Counting Down</h2>
+      <div class="kn-sub">ಶುಭ ಗಳಿಗೆಗಾಗಿ ಕಾಯುತ್ತಿದ್ದೇವೆ</div>
       <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.2 4.5 2.39 7.36L12 16.72l-6.19 4.5 2.39-7.36L2 9.36h7.61z"/></svg></div>
     </div>
 
@@ -1197,6 +1320,7 @@ Quick reference for what to change in this file.
     <div class="section-heading">
       <div class="eyebrow">Our Journey</div>
       <h2>Our Story</h2>
+      <div class="kn-sub">ನಮ್ಮ ಕಥೆ</div>
       <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.5-9.5-9C1 8 3.5 4 7.5 4c2 0 3.5 1 4.5 2.5C13 5 14.5 4 16.5 4 20.5 4 23 8 21.5 12c-2 4.5-9.5 9-9.5 9z"/></svg></div>
       <p class="subtitle">From a chance meeting to a lifetime promise — here's how our chapter began.</p>
     </div>
@@ -1278,6 +1402,7 @@ Quick reference for what to change in this file.
     <div class="section-heading">
       <div class="eyebrow">Memories</div>
       <h2>Our Adventures Together</h2>
+      <div class="kn-sub">ನಮ್ಮ ಪ್ರಯಾಣ</div>
       <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg></div>
       <p class="subtitle">A few of the places, days, and stories we've collected along the way.</p>
     </div>
@@ -1320,6 +1445,7 @@ Quick reference for what to change in this file.
     <div class="section-heading">
       <div class="eyebrow">Be With Us</div>
       <h2>The Celebrations</h2>
+      <div class="kn-sub">ಆಚರಣೆಗಳು</div>
       <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.2 4.5 2.39 7.36L12 16.72l-6.19 4.5 2.39-7.36L2 9.36h7.61z"/></svg></div>
     </div>
 
@@ -1327,13 +1453,16 @@ Quick reference for what to change in this file.
       <!-- Reception -->
       <div class="event-card">
         <div class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 21h8M12 17v4"/>
-            <path d="M5 4h14l-1 9a6 6 0 0 1-12 0z"/>
-            <path d="M19 6h2a2 2 0 0 1 0 4h-2.5"/>
+          <!-- Diya (oil lamp) — traditional Karnataka welcome -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3c-1.5 2-2 3.5-2 5s.9 2.5 2 2.5 2-1 2-2.5-.5-3-2-5z" fill="#D4A017" stroke="#A6862F"/>
+            <ellipse cx="12" cy="15" rx="9" ry="2.5"/>
+            <path d="M3 15c1 3 4 5 9 5s8-2 9-5"/>
+            <path d="M5 18l-2 2M19 18l2 2"/>
           </svg>
         </div>
         <h3>Reception</h3>
+        <div class="kn-sub" style="margin: -4px 0 10px; font-size: 1.1rem;">ಆರತಕ್ಷತೆ</div>
         <div class="when">Wednesday, 8 July 2026</div>
         <div class="time">7:00 PM onwards</div>
         <div class="venue">
@@ -1359,15 +1488,23 @@ Quick reference for what to change in this file.
       <!-- Wedding -->
       <div class="event-card">
         <div class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="9" cy="14" r="4"/>
-            <circle cx="15" cy="14" r="4"/>
-            <path d="M9 10V4M15 10V4M7 4h4M13 4h4"/>
+          <!-- Mantapa silhouette — temple/pavilion canopy where the wedding happens -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18"/>
+            <path d="M5 21V11M19 21V11"/>
+            <path d="M9 21v-7h6v7"/>
+            <path d="M3 11h18"/>
+            <path d="M5 11l-1-3h16l-1 3"/>
+            <path d="M6 8l1-2h10l1 2"/>
+            <path d="M8 6l1-2h6l1 2"/>
+            <path d="M12 4V2"/>
+            <circle cx="12" cy="1.5" r="0.6" fill="currentColor"/>
           </svg>
         </div>
         <h3>Wedding</h3>
+        <div class="kn-sub" style="margin: -4px 0 10px; font-size: 1.1rem;">ವಿವಾಹ</div>
         <div class="when">Thursday, 9 July 2027</div>
-        <div class="time">9:00 AM · Muhurta</div>
+        <div class="time">9:00 AM · Muhurta &middot; <span class="kn">ಮುಹೂರ್ತ</span></div>
         <div class="venue">
           Sapthapadi Palace &amp; Sapthagiri Palace<br/>
           First Floor, Bengaluru
@@ -1400,6 +1537,7 @@ Quick reference for what to change in this file.
     <div class="section-heading">
       <div class="eyebrow">The Place</div>
       <h2>Find Us</h2>
+      <div class="kn-sub">ಸ್ಥಳ &middot; ನಮ್ಮನ್ನು ತಲುಪಿ</div>
       <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg></div>
     </div>
 
@@ -1430,6 +1568,7 @@ Quick reference for what to change in this file.
     <div class="section-heading">
       <div class="eyebrow">For Our Out-of-Town Guests</div>
       <h2>Travel &amp; Stay</h2>
+      <div class="kn-sub">ಪ್ರಯಾಣ ಮತ್ತು ವಾಸ್ತವ್ಯ</div>
       <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 16l20-8-9 14-2-6z"/></svg></div>
       <p class="subtitle">Everything you need to know to make your time in Bengaluru effortless.</p>
     </div>
@@ -1456,7 +1595,7 @@ Quick reference for what to change in this file.
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21V11a4 4 0 0 1 8 0v10"/><path d="M4 21h16"/><circle cx="12" cy="6" r="2"/></svg>
         </div>
         <h3>Local Tips</h3>
-        <p>Don't leave without tasting Bengaluru — <strong>MTR</strong> for a classic dosa, <strong>Vidyarthi Bhavan</strong> for Masala Dosa, <strong>CTR</strong> in Malleshwaram, and a long walk through <strong>Cubbon Park</strong>. Carry light cottons; July evenings can be cool.</p>
+        <p>Taste Karnataka while you're here — <strong>Vidyarthi Bhavan</strong> for Masala Dosa, <strong>MTR</strong> and <strong>CTR</strong> for filter coffee and rava idli, <strong>Brahmin's Coffee Bar</strong> for vada-chutney, and a quiet walk through <strong>Cubbon Park</strong> or <strong>Lalbagh</strong>. July evenings can be breezy — carry a light shawl.</p>
       </div>
     </div>
   </div>
@@ -1471,18 +1610,19 @@ Quick reference for what to change in this file.
     <div class="section-heading">
       <div class="eyebrow">What to Wear</div>
       <h2>Dress Code</h2>
+      <div class="kn-sub">ಉಡುಗೆ</div>
       <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 4h4l-2 4 2 4h-4l-3 4-3-4H5l2-4-2-4h4z"/></svg></div>
     </div>
 
     <div class="dress-card">
       <div class="dress-grid">
         <div class="dress-event">
-          <h4>Reception</h4>
+          <h4>Reception &middot; <span class="kn">ಆರತಕ್ಷತೆ</span></h4>
           <p>Smart Ethnic / Cocktail Attire</p>
         </div>
         <div class="dress-event">
-          <h4>Wedding</h4>
-          <p>Traditional / Ethnic Wear</p>
+          <h4>Wedding &middot; <span class="kn">ವಿವಾಹ</span></h4>
+          <p>Traditional / Ethnic Wear &middot; <em>Mysore silk encouraged</em></p>
         </div>
       </div>
 
@@ -1511,6 +1651,7 @@ Quick reference for what to change in this file.
     <div class="section-heading">
       <div class="eyebrow">Save Your Seat</div>
       <h2>RSVP</h2>
+      <div class="kn-sub">ನಿಮ್ಮ ಆಗಮನ ನಮ್ಮ ಭಾಗ್ಯ</div>
       <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 6l8 6 8-6"/></svg></div>
       <p class="subtitle">Please let us know if you'll be joining us. Your presence means the world.</p>
     </div>
@@ -1586,6 +1727,7 @@ Quick reference for what to change in this file.
     <div class="section-heading">
       <div class="eyebrow">From Our Loved Ones</div>
       <h2>Wishes for the Couple</h2>
+      <div class="kn-sub">ಶುಭಾಶಯಗಳು</div>
       <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-5-7-11a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 6-7 11-7 11z"/></svg></div>
     </div>
 
@@ -1601,11 +1743,13 @@ Quick reference for what to change in this file.
      ============================================================ -->
 <footer>
   <div class="signoff">Anoop &amp; Roopa</div>
+  <div class="kn-foot">ಅನೂಪ್ &middot; ರೂಪಾ</div>
   <div class="years">2026 &middot; 2027</div>
   <div class="heart" aria-hidden="true">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-5-7-11a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 6-7 11-7 11z"/></svg>
   </div>
   <p class="made">Made with love, for love.</p>
+  <p class="kn-blessing">ನಿಮ್ಮ ಉಪಸ್ಥಿತಿಯೇ ನಮ್ಮ ಆಶೀರ್ವಾದ</p>
 </footer>
 
 
@@ -1833,7 +1977,7 @@ Quick reference for what to change in this file.
   const SAMPLE_WISHES = [
     { name: 'Priya & Karthik', message: 'Wishing you both a lifetime of laughter, love, and little adventures. So happy for you two.' },
     { name: 'Ravi Kumar',       message: 'May your love only deepen with each passing day. Bengaluru is going to glow that week!' },
-    { name: 'Aunty Lakshmi',    message: 'God bless you both with health, happiness and the warmest of homes. Cannot wait to be there.' }
+    { name: 'ಲಕ್ಷ್ಮಿ ಆಂಟಿ',     message: 'ನಿಮ್ಮಿಬ್ಬರಿಗೂ ಜೀವನದಲ್ಲಿ ಸುಖ, ಶಾಂತಿ ಮತ್ತು ಪ್ರೀತಿ ಸದಾ ತುಂಬಿರಲಿ. ಶುಭಾಶಯಗಳು!' }
   ];
 
   function loadWishes() {
