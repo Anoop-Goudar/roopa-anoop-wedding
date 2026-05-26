@@ -1221,6 +1221,7 @@ Quick reference for what to change in this file.
         <p>Misty mornings and quiet coffee in Coorg — the trip we still talk about as the one that sealed it.</p>
       </div>
 
+      <!-- Hidden until the moment happens — restore by removing the surrounding comment.
       <div class="milestone">
         <div class="timeline-photo ms-3">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M9 14l-2 7 5-3 5 3-2-7"/></svg>
@@ -1240,6 +1241,7 @@ Quick reference for what to change in this file.
         <h3>She Said Yes</h3>
         <p>And just like that — forever felt closer than it ever had before.</p>
       </div>
+      -->
 
       <div class="milestone">
         <div class="timeline-photo ms-5">
@@ -1919,30 +1921,54 @@ Quick reference for what to change in this file.
   const ICON_PLAY  = '<path d="M8 5v14l11-7z"/>';
   const ICON_PAUSE = '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
 
-  // If the audio file is missing (e.g. assets/music/our-song.mp3 not added yet),
-  // hide the player entirely rather than show a dead button.
+  // If the audio file is missing, hide the player entirely.
   audio.addEventListener('error', function () {
     player.style.display = 'none';
   });
 
-  playBtn.addEventListener('click', function () {
-    if (audio.paused) {
-      audio.play().then(function () {
-        player.classList.add('playing');
-        playIcon.innerHTML = ICON_PAUSE;
-        playBtn.setAttribute('aria-label', 'Pause music');
-      }).catch(function () { /* ignore */ });
+  function setPlayingUI(isPlaying) {
+    if (isPlaying) {
+      player.classList.add('playing');
+      playIcon.innerHTML = ICON_PAUSE;
+      playBtn.setAttribute('aria-label', 'Pause music');
     } else {
-      audio.pause();
       player.classList.remove('playing');
       playIcon.innerHTML = ICON_PLAY;
       playBtn.setAttribute('aria-label', 'Play music');
     }
+  }
+
+  function startPlaying() {
+    return audio.play().then(function () {
+      setPlayingUI(true);
+      return true;
+    }).catch(function () { return false; });
+  }
+
+  playBtn.addEventListener('click', function () {
+    if (audio.paused) startPlaying();
+    else { audio.pause(); setPlayingUI(false); }
   });
 
-  audio.addEventListener('ended', function () {
-    player.classList.remove('playing');
-    playIcon.innerHTML = ICON_PLAY;
+  audio.addEventListener('ended',   function () { setPlayingUI(false); });
+  audio.addEventListener('pause',   function () { setPlayingUI(false); });
+  audio.addEventListener('playing', function () { setPlayingUI(true); });
+
+  // Try to autoplay. Most browsers will block this until the user
+  // interacts with the page. If blocked, start on first interaction.
+  startPlaying().then(function (ok) {
+    if (ok) return;
+    var kickoff = function () {
+      startPlaying();
+      window.removeEventListener('click',      kickoff, true);
+      window.removeEventListener('touchstart', kickoff, true);
+      window.removeEventListener('keydown',    kickoff, true);
+      window.removeEventListener('scroll',     kickoff, true);
+    };
+    window.addEventListener('click',      kickoff, true);
+    window.addEventListener('touchstart', kickoff, true);
+    window.addEventListener('keydown',    kickoff, true);
+    window.addEventListener('scroll',     kickoff, true);
   });
 
 })();
