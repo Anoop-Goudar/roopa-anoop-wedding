@@ -402,6 +402,20 @@ Quick reference for what to change in this file.
   /* ============================================================
      COUNTDOWN
      ============================================================ */
+  /* ── Video Invitation ───────────────────────────────────── */
+  .invite-video-section { background: var(--ivory); text-align: center; }
+  .invite-video-wrap {
+    position: relative;
+    max-width: 640px;
+    margin: 2.5rem auto 0;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 52px rgba(0,0,0,.22);
+    border: 3px solid var(--gold);
+    background: #000;
+  }
+  .invite-video-wrap video { display: block; width: 100%; height: auto; }
+
   .countdown-section {
     background: linear-gradient(180deg, var(--ivory) 0%, var(--ivory-warm) 100%);
   }
@@ -1522,6 +1536,30 @@ Quick reference for what to change in this file.
       <path d="M12 5v14M6 13l6 6 6-6" />
     </svg>
   </a>
+</section>
+
+
+<!-- ============================================================
+     1b. VIDEO INVITATION
+     ============================================================ -->
+<section class="invite-video-section" id="invite">
+  <div class="container reveal">
+    <div class="section-heading">
+      <div class="eyebrow">Personal Message</div>
+      <h2>You're Invited</h2>
+      <div class="kn-sub">ನಿಮ್ಮನ್ನು ಆದರದಿಂದ ಆಹ್ವಾನಿಸುತ್ತಿದ್ದೇವೆ</div>
+      <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.2 4.5 2.39 7.36L12 16.72l-6.19 4.5 2.39-7.36L2 9.36h7.61z"/></svg></div>
+    </div>
+    <div class="invite-video-wrap">
+      <video
+        src="assets/video/invitation.mp4"
+        poster="assets/video/invitation-poster.jpg"
+        controls
+        playsinline
+        preload="metadata">
+      </video>
+    </div>
+  </div>
 </section>
 
 
