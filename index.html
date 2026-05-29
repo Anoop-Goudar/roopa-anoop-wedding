@@ -17,8 +17,6 @@
 <!-- Twitter / X card -->
 <meta name="twitter:card"  content="summary_large_image" />
 <meta name="twitter:image" content="https://anoop-goudar.github.io/roopa-anoop-wedding/assets/video/invitation-poster.jpg" />
-<!-- Apply saved theme immediately to avoid flash of unstyled content -->
-<script>(function(){try{var t=localStorage.getItem('anoop-roopa-theme-v1');if(t==='ak')document.documentElement.setAttribute('data-theme','ak');}catch(e){}})();</script>
 
 <!--
 ================================================================================
@@ -82,25 +80,24 @@ Quick reference for what to change in this file.
      Design tokens
      ============================================================ */
   :root {
-    /* Karnataka palette: Mysore-silk red, saffron-gold, sandalwood ivory, peacock teal */
-    --rose-deep:    #6B1F2C;   /* Mysore silk red */
-    --rose:         #8E2A40;   /* primary kumkum red */
-    --mauve:        #B07A8E;
-    --mauve-soft:   #E4CFD6;
-    --gold:         #C9A84C;
-    --gold-soft:    #E8D7A0;
-    --gold-deep:    #A6862F;
-    --saffron:      #D4A017;   /* turmeric saffron accent */
-    --peacock:      #0F5754;   /* peacock teal accent */
-    --leaf:         #2E7D32;   /* mango-leaf green */
+    --rose-deep:    #5C1827;
+    --rose:         #7A2035;
+    --mauve:        #A87088;
+    --mauve-soft:   #EDD8E0;
+    --gold:         #B8923C;
+    --gold-soft:    #E8D5A0;
+    --gold-deep:    #957230;
+    --saffron:      #C08818;
+    --peacock:      #0F5754;
+    --leaf:         #2E7D32;
     --leaf-deep:    #1B5E20;
-    --ivory:        #FAF3E6;   /* sandalwood ivory */
-    --ivory-warm:   #F3E4C9;
-    --charcoal:     #2A2024;
-    --charcoal-soft:#5A4D55;
-    --shadow-soft:  0 10px 40px rgba(107, 31, 44, 0.10);
-    --shadow-card:  0 8px 28px rgba(107, 31, 44, 0.14);
-    --border-gold:  1px solid rgba(201, 168, 76, 0.5);
+    --ivory:        #FAFAF6;
+    --ivory-warm:   #F5EDE0;
+    --charcoal:     #1C1614;
+    --charcoal-soft:#6A5A58;
+    --shadow-soft:  0 8px 32px rgba(92, 24, 39, 0.07);
+    --shadow-card:  0 2px 16px rgba(92, 24, 39, 0.08);
+    --border-gold:  1px solid rgba(184, 146, 60, 0.28);
 
     --serif:  'Cormorant Garamond', 'Times New Roman', serif;
     --sans:   'Lato', system-ui, -apple-system, sans-serif;
@@ -233,11 +230,10 @@ Quick reference for what to change in this file.
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 110px 24px 60px;
+    padding: 110px 24px 80px;
     background:
-      radial-gradient(ellipse at top, rgba(212, 160, 23, 0.18), transparent 60%),
-      radial-gradient(ellipse at bottom, rgba(107, 31, 44, 0.16), transparent 60%),
-      linear-gradient(180deg, #FBF3DE 0%, #F8E4C6 55%, #F2C8B5 100%);
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(184, 146, 60, 0.13), transparent),
+      linear-gradient(160deg, #FAFAF6 0%, #F5EDE0 60%, #EFE0CC 100%);
     position: relative;
     overflow: hidden;
   }
@@ -277,16 +273,7 @@ Quick reference for what to change in this file.
     opacity: 0;
     animation: fadeUp 1.6s ease 1.15s forwards;
   }
-  .hero::before, .hero::after {
-    content: '';
-    position: absolute;
-    width: 420px; height: 420px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(201, 168, 76, 0.15), transparent 70%);
-    pointer-events: none;
-  }
-  .hero::before { top: -120px; left: -120px; }
-  .hero::after  { bottom: -160px; right: -160px; }
+  .hero::before, .hero::after { display: none; }
 
   .hero-inner {
     position: relative;
@@ -358,13 +345,14 @@ Quick reference for what to change in this file.
     animation: fadeUp 1.6s ease 1.3s forwards;
   }
   .hero .date-card {
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(8px);
-    border: var(--border-gold);
-    padding: 18px 30px;
-    border-radius: 6px;
-    min-width: 180px;
-    box-shadow: var(--shadow-soft);
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.9);
+    padding: 20px 36px;
+    border-radius: 14px;
+    min-width: 188px;
+    box-shadow: 0 4px 24px rgba(92, 24, 39, 0.08);
   }
   .hero .date-card .label {
     font-family: var(--sans);
@@ -449,9 +437,7 @@ Quick reference for what to change in this file.
     50%      { box-shadow: 0 0 0 7px rgba(255,255,255,0); }
   }
 
-  .countdown-section {
-    background: linear-gradient(180deg, var(--ivory) 0%, var(--ivory-warm) 100%);
-  }
+  .countdown-section { background: var(--ivory-warm); }
   .countdown-label {
     text-align: center;
     font-family: var(--serif);
@@ -473,22 +459,12 @@ Quick reference for what to change in this file.
     margin: 0 auto;
   }
   .countdown .unit {
-    background: linear-gradient(160deg, #fff 0%, #FBF3DE 100%);
+    background: #fff;
     border: var(--border-gold);
-    border-radius: 8px;
-    padding: 28px 12px;
+    border-radius: 14px;
+    padding: 32px 12px;
     text-align: center;
     box-shadow: var(--shadow-card);
-    position: relative;
-    overflow: hidden;
-  }
-  .countdown .unit::before {
-    content: '';
-    position: absolute;
-    inset: 4px;
-    border: 1px solid rgba(201, 168, 76, 0.25);
-    border-radius: 5px;
-    pointer-events: none;
   }
   .countdown .num {
     font-family: var(--serif);
@@ -620,18 +596,17 @@ Quick reference for what to change in this file.
     grid-auto-flow: dense;
   }
   .photo-card {
-    border-radius: 8px;
+    border-radius: 14px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
     box-shadow: var(--shadow-card);
-    border: var(--border-gold);
     transition: transform .35s ease, box-shadow .35s ease;
     background: #fff;
   }
   .photo-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(110,42,58,0.18);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 36px rgba(92, 24, 39, 0.16);
   }
   .photo-card .img {
     width: 100%;
@@ -657,12 +632,12 @@ Quick reference for what to change in this file.
   .photo-card.wide .img { aspect-ratio: 16 / 11; }
   .photo-card .caption {
     background: #fff;
-    padding: 12px 14px;
+    padding: 14px 16px;
     font-family: var(--serif);
     font-style: italic;
     color: var(--rose-deep);
     text-align: center;
-    border-top: var(--border-gold);
+    font-size: 1.05rem;
   }
 
   .pc-1 { background: linear-gradient(135deg, #6E2A3A 0%, #B07A8E 100%); }
@@ -752,7 +727,7 @@ Quick reference for what to change in this file.
   /* ============================================================
      EVENTS
      ============================================================ */
-  .events-section { background: linear-gradient(180deg, var(--ivory) 0%, #F3E6DC 100%); }
+  .events-section { background: var(--ivory); }
   .events {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -763,20 +738,10 @@ Quick reference for what to change in this file.
   .event-card {
     background: #fff;
     border: var(--border-gold);
-    border-radius: 10px;
-    padding: 44px 36px;
+    border-radius: 16px;
+    padding: 48px 40px;
     text-align: center;
     box-shadow: var(--shadow-card);
-    position: relative;
-    overflow: hidden;
-  }
-  .event-card::before {
-    content: '';
-    position: absolute;
-    inset: 8px;
-    border: 1px solid rgba(201, 168, 76, 0.3);
-    border-radius: 6px;
-    pointer-events: none;
   }
   .event-card .icon {
     color: var(--gold);
@@ -823,20 +788,20 @@ Quick reference for what to change in this file.
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 12px;
-    padding: 12px 22px;
-    border-radius: 4px;
+    font-size: 11px;
+    padding: 12px 24px;
+    border-radius: 999px;
     border: 1px solid var(--gold);
     background: transparent;
     color: var(--gold-deep);
     cursor: pointer;
-    transition: all .25s ease;
+    transition: all .22s ease;
     text-decoration: none;
   }
   .btn:hover {
-    background: var(--gold);
+    background: var(--gold-deep);
     color: #fff;
-    border-color: var(--gold);
+    border-color: var(--gold-deep);
   }
   .btn-primary {
     background: var(--rose);
@@ -892,9 +857,7 @@ Quick reference for what to change in this file.
   /* ============================================================
      TRAVEL
      ============================================================ */
-  .travel-section {
-    background: linear-gradient(180deg, var(--ivory-warm) 0%, var(--ivory) 100%);
-  }
+  .travel-section { background: var(--ivory-warm); }
   .travel-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -905,13 +868,13 @@ Quick reference for what to change in this file.
   .travel-card {
     background: #fff;
     border: var(--border-gold);
-    border-radius: 10px;
-    padding: 36px 28px;
+    border-radius: 16px;
+    padding: 40px 30px;
     text-align: center;
     box-shadow: var(--shadow-card);
-    transition: transform .3s ease;
+    transition: transform .3s ease, box-shadow .3s ease;
   }
-  .travel-card:hover { transform: translateY(-6px); }
+  .travel-card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(92,24,39,.13); }
   .travel-card .ic {
     width: 64px; height: 64px;
     margin: 0 auto 16px;
@@ -933,10 +896,10 @@ Quick reference for what to change in this file.
   .dress-card {
     max-width: 760px;
     margin: 0 auto;
-    background: linear-gradient(160deg, #fff 0%, #FBF3DE 100%);
+    background: #fff;
     border: var(--border-gold);
-    border-radius: 10px;
-    padding: 50px 40px;
+    border-radius: 20px;
+    padding: 56px 48px;
     text-align: center;
     box-shadow: var(--shadow-card);
   }
@@ -985,15 +948,13 @@ Quick reference for what to change in this file.
   /* ============================================================
      RSVP
      ============================================================ */
-  .rsvp-section {
-    background: linear-gradient(180deg, var(--ivory) 0%, #F4E5DA 100%);
-  }
+  .rsvp-section { background: var(--ivory-warm); }
   .rsvp-form {
     max-width: 640px;
     margin: 0 auto;
     background: #fff;
-    padding: 44px;
-    border-radius: 10px;
+    padding: 52px 48px;
+    border-radius: 20px;
     border: var(--border-gold);
     box-shadow: var(--shadow-card);
   }
@@ -1075,9 +1036,9 @@ Quick reference for what to change in this file.
   .thanks {
     display: none;
     text-align: center;
-    background: linear-gradient(160deg, #fff 0%, #FBF3DE 100%);
+    background: #fff;
     border: var(--border-gold);
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 56px 40px;
     box-shadow: var(--shadow-card);
     max-width: 640px;
@@ -1251,243 +1212,10 @@ Quick reference for what to change in this file.
   .center { text-align: center; }
   .mt-3 { margin-top: 28px; }
 
-  /* ============================================================
-     THEME TOGGLE BUTTON
-     ============================================================ */
-  .theme-toggle {
-    position: fixed;
-    top: 18px;
-    right: 18px;
-    z-index: 150;
-    background: rgba(255, 255, 255, 0.92);
-    border: var(--border-gold);
-    border-radius: 999px;
-    padding: 8px 16px 8px 10px;
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    box-shadow: 0 4px 18px rgba(107, 31, 44, 0.14);
-    cursor: pointer;
-    font-family: var(--sans);
-    font-weight: 700;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--gold-deep);
-    transition: all 0.25s ease;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-  .theme-toggle:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 24px rgba(107, 31, 44, 0.22);
-    background: rgba(255, 255, 255, 0.98);
-  }
-  .theme-toggle .toggle-swatch {
-    width: 20px; height: 20px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    flex-shrink: 0;
-    box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.10);
-  }
-  .theme-toggle .toggle-swatch span { flex: 1; display: block; }
-  .theme-toggle .toggle-swatch span:first-child { background: #E8A822; }
-  .theme-toggle .toggle-swatch span:last-child  { background: #CC3300; }
-  .theme-toggle .toggle-label { white-space: nowrap; }
-  @media (max-width: 500px) {
-    .theme-toggle { top: 14px; right: 14px; padding: 8px 12px 8px 8px; gap: 6px; }
-    .theme-toggle .toggle-label { display: none; }
-  }
-
-  /* ============================================================
-     ARISHINA KUNKUMA THEME  (set data-theme="ak" on <html>)
-     Palette: turmeric-gold (#E8A820) + vermilion kumkum (#CC3300)
-     over a warm saffron-ivory ground.
-     ============================================================ */
-  [data-theme="ak"] {
-    --rose-deep:    #9B2300;   /* deep vermilion */
-    --rose:         #CC3300;   /* bright kumkum red */
-    --mauve:        #D47040;
-    --mauve-soft:   #FAE0C0;
-    --gold:         #E8A820;   /* bright turmeric gold */
-    --gold-soft:    #FAEAB8;
-    --gold-deep:    #B87810;   /* deep turmeric */
-    --saffron:      #E89818;
-    --peacock:      #0F5754;
-    --leaf:         #2E7D32;
-    --leaf-deep:    #1B5E20;
-    --ivory:        #FEF6E4;   /* turmeric-warm ivory */
-    --ivory-warm:   #FDE8BE;
-    --charcoal:     #2A2024;
-    --charcoal-soft:#5A3820;   /* warm brown */
-    --shadow-soft:  0 10px 40px rgba(155, 35, 0, 0.11);
-    --shadow-card:  0 8px 28px rgba(155, 35, 0, 0.15);
-    --border-gold:  1px solid rgba(232, 168, 32, 0.50);
-  }
-
-  /* Subtle repeating kumkuma-dot texture on the page */
-  [data-theme="ak"] body {
-    background-image: radial-gradient(circle, rgba(204, 51, 0, 0.055) 1.2px, transparent 1.2px);
-    background-size: 22px 22px;
-  }
-
-  /* Hero: turmeric-gold glow at top, warm saffron ground */
-  [data-theme="ak"] .hero {
-    background:
-      radial-gradient(ellipse at top,    rgba(232, 168, 32, 0.22), transparent 60%),
-      radial-gradient(ellipse at bottom, rgba(155, 35,  0, 0.17), transparent 60%),
-      linear-gradient(180deg, #FEF6E4 0%, #FDDE98 55%, #FCC878 100%);
-  }
-  [data-theme="ak"] .hero::before,
-  [data-theme="ak"] .hero::after {
-    background: radial-gradient(circle, rgba(232, 168, 32, 0.15), transparent 70%);
-  }
-
-  /* Countdown */
-  [data-theme="ak"] .countdown .unit {
-    background: linear-gradient(160deg, #fff 0%, #FDE8BE 100%);
-  }
-  [data-theme="ak"] .countdown .unit::before {
-    border-color: rgba(232, 168, 32, 0.25);
-  }
-
-  /* Events section */
-  [data-theme="ak"] .events-section {
-    background: linear-gradient(180deg, var(--ivory) 0%, #FDDBA8 100%);
-  }
-
-  /* Dress code */
-  [data-theme="ak"] .dress-card {
-    background: linear-gradient(160deg, #fff 0%, #FDE8BE 100%);
-  }
-
-  /* RSVP */
-  [data-theme="ak"] .rsvp-section {
-    background: linear-gradient(180deg, var(--ivory) 0%, #FDE2A8 100%);
-  }
-  [data-theme="ak"] .thanks {
-    background: linear-gradient(160deg, #fff 0%, #FDE8BE 100%);
-  }
-
-  /* Footer: deep turmeric-brown */
-  [data-theme="ak"] footer { background: #4A1800; }
-
-  /* Photo hover shadow */
-  [data-theme="ak"] .photo-card:hover {
-    box-shadow: 0 16px 40px rgba(155, 35, 0, 0.18);
-  }
-
-  /* Gallery placeholder gradients */
-  [data-theme="ak"] .pc-1 { background: linear-gradient(135deg, #9B2300, #D47040); }
-  [data-theme="ak"] .pc-2 { background: linear-gradient(135deg, #E8A820, #CC3300); }
-  [data-theme="ak"] .pc-3 { background: linear-gradient(135deg, #D47040, #FDE8BE); }
-  [data-theme="ak"] .pc-4 { background: linear-gradient(135deg, #CC3300, #E8A820); }
-  [data-theme="ak"] .pc-5 { background: linear-gradient(135deg, #9B2300, #E8A820); }
-  [data-theme="ak"] .pc-6 { background: linear-gradient(135deg, #D47040, #9B2300); }
-  [data-theme="ak"] .pc-7 { background: linear-gradient(135deg, #E8A820, #D47040); }
-  [data-theme="ak"] .pc-8 { background: linear-gradient(135deg, #CC3300, #D47040); }
-
-  /* Timeline milestone placeholder gradients */
-  [data-theme="ak"] .ms-1 { background: linear-gradient(135deg, #D47040, #CC3300); }
-  [data-theme="ak"] .ms-2 { background: linear-gradient(135deg, #E8A820, #CC3300); }
-  [data-theme="ak"] .ms-3 { background: linear-gradient(135deg, #9B2300, #D47040); }
-  [data-theme="ak"] .ms-4 { background: linear-gradient(135deg, #E8A820, #9B2300); }
-  [data-theme="ak"] .ms-5 { background: linear-gradient(135deg, #CC3300, #E8A820); }
-  [data-theme="ak"] .ms-6 { background: linear-gradient(135deg, #9B2300, #E8A820); }
-
-  /* Music player shadow */
-  [data-theme="ak"] .player {
-    box-shadow: 0 10px 30px rgba(155, 35, 0, 0.22);
-  }
-  [data-theme="ak"] .player.playing .play-btn,
-  [data-theme="ak"] .player.awaiting .play-btn {
-    animation: glow-ak 2s ease-in-out infinite;
-  }
-  @keyframes glow-ak {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(232, 168, 32, 0.65); }
-    50%       { box-shadow: 0 0 0 14px rgba(232, 168, 32, 0); }
-  }
-
-  /* Toggle button in AK mode */
-  [data-theme="ak"] .theme-toggle {
-    background: rgba(254, 246, 228, 0.94);
-    box-shadow: 0 4px 18px rgba(155, 35, 0, 0.17);
-  }
-
-  /* ============================================================
-     MOBILE RESPONSIVENESS
-     ============================================================ */
-
-  /* Section vertical padding: reduce on phones */
-  @media (max-width: 640px) {
-    section { padding: 64px 0; }
-    .hero { padding-top: 88px; padding-bottom: 48px; }
-    .hero .dates { gap: 14px; }
-    .hero .date-card { min-width: 144px; padding: 14px 18px; }
-    .section-heading { margin-bottom: 36px; }
-    .event-card { padding: 32px 22px; }
-    .dress-card { padding: 34px 22px; }
-    .rsvp-form  { padding: 28px 20px; }
-    .travel-card { padding: 28px 20px; }
-  }
-
-  /* Countdown: 2×2 grid on narrow phones */
-  @media (max-width: 520px) {
-    .countdown { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  }
-
-  /* Gallery: shorter aspect ratios on 1-column layout */
-  @media (max-width: 480px) {
-    .photo-card .img      { aspect-ratio: 4/3; }
-    .photo-card.tall .img { aspect-ratio: 4/3; }
-    .photo-card.wide .img { aspect-ratio: 16/9; }
-  }
-
-  /* Very small screens: tighter padding + stacked date cards */
-  @media (max-width: 400px) {
-    section { padding: 52px 0; }
-    .container { padding: 0 16px; }
-    .hero .dates { flex-direction: column; align-items: stretch; }
-    .hero .date-card { min-width: unset; }
-  }
-
-  /* ============================================================
-     ARISHINA KUNKUMA DIVIDER ILLUSTRATION
-     Visible only in AK theme, between Story and Gallery
-     ============================================================ */
-  .ak-divider {
-    display: none;
-    text-align: center;
-    padding: 0 0 56px;
-    background: var(--ivory);
-  }
-  [data-theme="ak"] .ak-divider { display: block; }
-  .ak-divider svg {
-    width: 100%;
-    max-width: 460px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-  .ak-divider-caption {
-    font-family: var(--kannada);
-    color: var(--gold-deep);
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 4px;
-    margin: 6px 0 0;
-    text-transform: uppercase;
-  }
 </style>
 </head>
 <body>
 
-<!-- Theme toggle: switches between Classic and Arishina Kunkuma palette -->
-<button class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">
-  <span class="toggle-swatch" aria-hidden="true"><span></span><span></span></span>
-  <span class="toggle-label" id="toggle-label">Arishina Kunkuma</span>
-</button>
 
 <!-- ============================================================
      1. HERO
@@ -1632,89 +1360,6 @@ Quick reference for what to change in this file.
      AK DIVIDER — Arishina Kunkuma bowl with flowers & coconut
      Hidden in Classic theme; shown only in Arishina Kunkuma theme
      ============================================================ -->
-<div class="ak-divider" aria-hidden="true">
-  <svg viewBox="0 0 500 275" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two bowls of arishina and kunkuma on a jasmine flower bed with coconut">
-    <defs>
-      <!-- Jasmine flower template: 5 petals around a yellow centre -->
-      <g id="akd-j">
-        <ellipse cx="0" cy="-7" rx="4.8" ry="2.6" fill="#FFF6EE"/>
-        <ellipse cx="0" cy="-7" rx="4.8" ry="2.6" fill="#FFF6EE" transform="rotate(72,0,0)"/>
-        <ellipse cx="0" cy="-7" rx="4.8" ry="2.6" fill="#FFF6EE" transform="rotate(144,0,0)"/>
-        <ellipse cx="0" cy="-7" rx="4.8" ry="2.6" fill="#FFF6EE" transform="rotate(216,0,0)"/>
-        <ellipse cx="0" cy="-7" rx="4.8" ry="2.6" fill="#FFF6EE" transform="rotate(288,0,0)"/>
-        <circle r="2.8" fill="#F0D040"/>
-      </g>
-    </defs>
-
-    <!-- ── Green leaves scattered in jasmine bed ── -->
-    <ellipse cx="38"  cy="218" rx="10" ry="4"   fill="#4A7C3A" transform="rotate(28,38,218)"   opacity=".78"/>
-    <ellipse cx="92"  cy="232" rx="11" ry="4.5" fill="#5A8E48" transform="rotate(-18,92,232)"  opacity=".74"/>
-    <ellipse cx="172" cy="222" rx="9"  ry="4"   fill="#4A7C3A" transform="rotate(38,172,222)"  opacity=".78"/>
-    <ellipse cx="220" cy="240" rx="10" ry="4"   fill="#5A8E48" transform="rotate(-22,220,240)" opacity=".74"/>
-    <ellipse cx="250" cy="196" rx="9"  ry="3.5" fill="#4A7C3A" transform="rotate(14,250,196)"  opacity=".78"/>
-    <ellipse cx="282" cy="225" rx="11" ry="4.5" fill="#5A8E48" transform="rotate(-35,282,225)" opacity=".74"/>
-    <ellipse cx="318" cy="240" rx="10" ry="4"   fill="#4A7C3A" transform="rotate(22,318,240)"  opacity=".78"/>
-    <ellipse cx="396" cy="230" rx="11" ry="4.5" fill="#5A8E48" transform="rotate(18,396,230)"  opacity=".74"/>
-    <ellipse cx="458" cy="217" rx="10" ry="4"   fill="#4A7C3A" transform="rotate(-24,458,217)" opacity=".78"/>
-    <ellipse cx="128" cy="255" rx="9"  ry="3.5" fill="#4A7C3A" transform="rotate(30,128,255)"  opacity=".74"/>
-    <ellipse cx="372" cy="255" rx="10" ry="4"   fill="#5A8E48" transform="rotate(-15,372,255)" opacity=".78"/>
-    <ellipse cx="488" cy="240" rx="9"  ry="3.5" fill="#4A7C3A" transform="rotate(8,488,240)"   opacity=".72"/>
-
-    <!-- ── Jasmine flower bed (mallige) ── -->
-    <!-- Row 1  y=165 -->
-    <use href="#akd-j" transform="translate(20,165)"/> <use href="#akd-j" transform="translate(42,165)"/> <use href="#akd-j" transform="translate(64,165)"/> <use href="#akd-j" transform="translate(86,165)"/> <use href="#akd-j" transform="translate(108,165)"/> <use href="#akd-j" transform="translate(130,165)"/> <use href="#akd-j" transform="translate(152,165)"/> <use href="#akd-j" transform="translate(174,165)"/> <use href="#akd-j" transform="translate(196,165)"/> <use href="#akd-j" transform="translate(218,165)"/> <use href="#akd-j" transform="translate(240,165)"/> <use href="#akd-j" transform="translate(262,165)"/> <use href="#akd-j" transform="translate(284,165)"/> <use href="#akd-j" transform="translate(306,165)"/> <use href="#akd-j" transform="translate(328,165)"/> <use href="#akd-j" transform="translate(350,165)"/> <use href="#akd-j" transform="translate(372,165)"/> <use href="#akd-j" transform="translate(394,165)"/> <use href="#akd-j" transform="translate(416,165)"/> <use href="#akd-j" transform="translate(438,165)"/> <use href="#akd-j" transform="translate(460,165)"/> <use href="#akd-j" transform="translate(482,165)"/>
-    <!-- Row 2  y=188 -->
-    <use href="#akd-j" transform="translate(31,188)"/> <use href="#akd-j" transform="translate(53,188)"/> <use href="#akd-j" transform="translate(75,188)"/> <use href="#akd-j" transform="translate(97,188)"/> <use href="#akd-j" transform="translate(119,188)"/> <use href="#akd-j" transform="translate(141,188)"/> <use href="#akd-j" transform="translate(163,188)"/> <use href="#akd-j" transform="translate(185,188)"/> <use href="#akd-j" transform="translate(207,188)"/> <use href="#akd-j" transform="translate(229,188)"/> <use href="#akd-j" transform="translate(251,188)"/> <use href="#akd-j" transform="translate(273,188)"/> <use href="#akd-j" transform="translate(295,188)"/> <use href="#akd-j" transform="translate(317,188)"/> <use href="#akd-j" transform="translate(339,188)"/> <use href="#akd-j" transform="translate(361,188)"/> <use href="#akd-j" transform="translate(383,188)"/> <use href="#akd-j" transform="translate(405,188)"/> <use href="#akd-j" transform="translate(427,188)"/> <use href="#akd-j" transform="translate(449,188)"/> <use href="#akd-j" transform="translate(471,188)"/>
-    <!-- Row 3  y=211 -->
-    <use href="#akd-j" transform="translate(20,211)"/> <use href="#akd-j" transform="translate(42,211)"/> <use href="#akd-j" transform="translate(64,211)"/> <use href="#akd-j" transform="translate(86,211)"/> <use href="#akd-j" transform="translate(108,211)"/> <use href="#akd-j" transform="translate(130,211)"/> <use href="#akd-j" transform="translate(152,211)"/> <use href="#akd-j" transform="translate(174,211)"/> <use href="#akd-j" transform="translate(196,211)"/> <use href="#akd-j" transform="translate(218,211)"/> <use href="#akd-j" transform="translate(240,211)"/> <use href="#akd-j" transform="translate(262,211)"/> <use href="#akd-j" transform="translate(284,211)"/> <use href="#akd-j" transform="translate(306,211)"/> <use href="#akd-j" transform="translate(328,211)"/> <use href="#akd-j" transform="translate(350,211)"/> <use href="#akd-j" transform="translate(372,211)"/> <use href="#akd-j" transform="translate(394,211)"/> <use href="#akd-j" transform="translate(416,211)"/> <use href="#akd-j" transform="translate(438,211)"/> <use href="#akd-j" transform="translate(460,211)"/> <use href="#akd-j" transform="translate(482,211)"/>
-    <!-- Row 4  y=234 -->
-    <use href="#akd-j" transform="translate(31,234)"/> <use href="#akd-j" transform="translate(53,234)"/> <use href="#akd-j" transform="translate(75,234)"/> <use href="#akd-j" transform="translate(97,234)"/> <use href="#akd-j" transform="translate(119,234)"/> <use href="#akd-j" transform="translate(141,234)"/> <use href="#akd-j" transform="translate(163,234)"/> <use href="#akd-j" transform="translate(185,234)"/> <use href="#akd-j" transform="translate(207,234)"/> <use href="#akd-j" transform="translate(229,234)"/> <use href="#akd-j" transform="translate(251,234)"/> <use href="#akd-j" transform="translate(273,234)"/> <use href="#akd-j" transform="translate(295,234)"/> <use href="#akd-j" transform="translate(317,234)"/> <use href="#akd-j" transform="translate(339,234)"/> <use href="#akd-j" transform="translate(361,234)"/> <use href="#akd-j" transform="translate(383,234)"/> <use href="#akd-j" transform="translate(405,234)"/> <use href="#akd-j" transform="translate(427,234)"/> <use href="#akd-j" transform="translate(449,234)"/> <use href="#akd-j" transform="translate(471,234)"/>
-    <!-- Row 5  y=257 -->
-    <use href="#akd-j" transform="translate(20,257)"/> <use href="#akd-j" transform="translate(42,257)"/> <use href="#akd-j" transform="translate(64,257)"/> <use href="#akd-j" transform="translate(86,257)"/> <use href="#akd-j" transform="translate(108,257)"/> <use href="#akd-j" transform="translate(130,257)"/> <use href="#akd-j" transform="translate(152,257)"/> <use href="#akd-j" transform="translate(174,257)"/> <use href="#akd-j" transform="translate(196,257)"/> <use href="#akd-j" transform="translate(218,257)"/> <use href="#akd-j" transform="translate(240,257)"/> <use href="#akd-j" transform="translate(262,257)"/> <use href="#akd-j" transform="translate(284,257)"/> <use href="#akd-j" transform="translate(306,257)"/> <use href="#akd-j" transform="translate(328,257)"/> <use href="#akd-j" transform="translate(350,257)"/> <use href="#akd-j" transform="translate(372,257)"/> <use href="#akd-j" transform="translate(394,257)"/> <use href="#akd-j" transform="translate(416,257)"/> <use href="#akd-j" transform="translate(438,257)"/> <use href="#akd-j" transform="translate(460,257)"/> <use href="#akd-j" transform="translate(482,257)"/>
-
-    <!-- ── Coconut — top right ── -->
-    <g transform="translate(435,62)">
-      <ellipse cx="0" cy="0" rx="29" ry="25" fill="#8B5E3C"/>
-      <ellipse cx="6"  cy="4" rx="20" ry="16" fill="#6B3E20" opacity=".32"/>
-      <path d="M-26,-7 q8,-7 16,-2"  stroke="#5C3D1A" stroke-width="1.3" stroke-linecap="round" fill="none"/>
-      <path d="M-28,4  q10,-4 18,2"  stroke="#5C3D1A" stroke-width="1.3" stroke-linecap="round" fill="none"/>
-      <path d="M-24,14 q8,3 15,0"    stroke="#5C3D1A" stroke-width="1.3" stroke-linecap="round" fill="none"/>
-      <circle cx="-3" cy="19"   r="3.8" fill="#2A1500"/>
-      <circle cx="5"  cy="21"   r="3.3" fill="#2A1500"/>
-      <circle cx="1"  cy="23.5" r="2.8" fill="#1A0E00"/>
-      <path d="M0,-24 q-7,-12 -16,-20" stroke="#2E7D32" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <path d="M0,-24 q-2,-15  0,-27"  stroke="#388E3C" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <path d="M0,-24 q6,-13  12,-20"  stroke="#2E7D32" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <path d="M0,-24 q12,-10 20,-14"  stroke="#43A047" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-      <path d="M0,-24 q-14,-8 -22,-12" stroke="#43A047" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-    </g>
-
-    <!-- ── Left bowl: Arishina (Turmeric — yellow) ── -->
-    <ellipse cx="145" cy="200" rx="80" ry="10" fill="rgba(100,50,0,.10)"/>
-    <path d="M68,148 C68,202 222,202 222,148" fill="#7A5010" opacity=".55"/>
-    <ellipse cx="145" cy="148" rx="73" ry="45" fill="#9A7420"/>
-    <ellipse cx="145" cy="148" rx="65" ry="39" fill="#E8A820"/>
-    <ellipse cx="145" cy="130" rx="52" ry="33" fill="#EBB030"/>
-    <ellipse cx="132" cy="122" rx="27" ry="16" fill="#F5CC38" opacity=".65"/>
-    <ellipse cx="145" cy="148" rx="77" ry="48" fill="none" stroke="#C9A84C" stroke-width="7"/>
-    <ellipse cx="145" cy="148" rx="70" ry="42" fill="none" stroke="#D4B558" stroke-width="1.5" opacity=".70"/>
-    <ellipse cx="145" cy="148" rx="77" ry="48" fill="none" stroke="#9A7818" stroke-width="1.5"/>
-    <ellipse cx="115" cy="132" rx="23" ry="10" fill="rgba(255,240,150,.40)" transform="rotate(-20,115,132)"/>
-
-    <!-- ── Right bowl: Kunkuma (Vermilion — red) ── -->
-    <ellipse cx="355" cy="200" rx="80" ry="10" fill="rgba(100,50,0,.10)"/>
-    <path d="M278,148 C278,202 432,202 432,148" fill="#7A5010" opacity=".55"/>
-    <ellipse cx="355" cy="148" rx="73" ry="45" fill="#801810"/>
-    <ellipse cx="355" cy="148" rx="65" ry="39" fill="#CC3300"/>
-    <ellipse cx="355" cy="130" rx="52" ry="33" fill="#C83200"/>
-    <ellipse cx="342" cy="122" rx="27" ry="16" fill="#E84020" opacity=".60"/>
-    <ellipse cx="355" cy="148" rx="77" ry="48" fill="none" stroke="#C9A84C" stroke-width="7"/>
-    <ellipse cx="355" cy="148" rx="70" ry="42" fill="none" stroke="#D4B558" stroke-width="1.5" opacity=".70"/>
-    <ellipse cx="355" cy="148" rx="77" ry="48" fill="none" stroke="#9A7818" stroke-width="1.5"/>
-    <ellipse cx="325" cy="132" rx="23" ry="10" fill="rgba(255,240,150,.40)" transform="rotate(-20,325,132)"/>
-  </svg>
-  <p class="ak-divider-caption kn">ಅರಿಶಿನ &nbsp;&middot;&nbsp; ಕುಂಕುಮ</p>
-</div>
 
 <!-- ============================================================
      4. GALLERY
@@ -2450,33 +2095,6 @@ Quick reference for what to change in this file.
     window.addEventListener('scroll',     kickoff, true);
   });
 
-
-  // ============================================================
-  // Theme toggle
-  // ============================================================
-  (function () {
-    var THEME_KEY  = 'anoop-roopa-theme-v1';
-    var toggleBtn  = document.getElementById('theme-toggle');
-    var toggleLabel = document.getElementById('toggle-label');
-
-    function updateLabel() {
-      var isAK = document.documentElement.getAttribute('data-theme') === 'ak';
-      toggleLabel.textContent = isAK ? 'Classic' : 'Arishina Kunkuma';
-    }
-    updateLabel(); // sync with theme already applied by inline head script
-
-    toggleBtn.addEventListener('click', function () {
-      var isAK = document.documentElement.getAttribute('data-theme') === 'ak';
-      if (isAK) {
-        document.documentElement.removeAttribute('data-theme');
-        try { localStorage.setItem(THEME_KEY, ''); } catch (e) {}
-      } else {
-        document.documentElement.setAttribute('data-theme', 'ak');
-        try { localStorage.setItem(THEME_KEY, 'ak'); } catch (e) {}
-      }
-      updateLabel();
-    });
-  }());
 
   // ── Unmute button for autoplay video ─────────────────────
   (function () {
