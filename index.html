@@ -1656,6 +1656,7 @@ Quick reference for what to change in this file.
       <div class="field">
         <label for="rsvp-message">Warm Wishes / Message (optional)</label>
         <textarea id="rsvp-message" name="message" placeholder="Send us a little note..."></textarea>
+        <p style="margin: 8px 0 0; font-size: 0.85rem; color: var(--charcoal-soft); font-style: italic;">Your message will appear in the Wishes Wall below.</p>
       </div>
 
       <div class="submit-wrap">
@@ -1933,11 +1934,7 @@ Quick reference for what to change in this file.
   // ============================================================
   const SHEET_ID      = '1_7NhZWwBy8eK2U1YboLsOYq5mZ43hz5c8JTCxazJaCo';
   const SHEETS_KEY    = 'AIzaSyASE3Y-Qp6-VzqR4deguWrCkgVMXWCVCLA';
-  const SAMPLE_WISHES = [
-    { name: 'Priya & Karthik', message: 'Wishing you both a lifetime of laughter, love, and little adventures. So happy for you two.' },
-    { name: 'Ravi Kumar',       message: 'May your love only deepen with each passing day. Bengaluru is going to glow that week!' },
-    { name: 'ಲಕ್ಷ್ಮಿ ಆಂಟಿ',     message: 'ನಿಮ್ಮಿಬ್ಬರಿಗೂ ಜೀವನದಲ್ಲಿ ಸುಖ, ಶಾಂತಿ ಮತ್ತು ಪ್ರೀತಿ ಸದಾ ತುಂಬಿರಲಿ. ಶುಭಾಶಯಗಳು!' }
-  ];
+  const SAMPLE_WISHES = [];
 
   const FLORAL_SVG = '<svg viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”1.4” stroke-linecap=”round” stroke-linejoin=”round”>'
     + '<circle cx=”12” cy=”12” r=”2”/>'
@@ -2048,6 +2045,7 @@ Quick reference for what to change in this file.
   const player = document.getElementById('player');
   const audio  = document.getElementById('our-audio');
   const playBtn= document.getElementById('play-btn');
+  audio.volume = 0.75;
   const playIcon = document.getElementById('play-icon');
 
   const ICON_PLAY  = '<path d="M8 5v14l11-7z"/>';
