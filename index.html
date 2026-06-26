@@ -2277,6 +2277,7 @@ Quick reference for what to change in this file.
   }
 
   function startPlaying() {
+    if (audio.currentTime < 25) audio.currentTime = 25;
     return audio.play().then(function () {
       setPlayingUI(true);
       return true;
