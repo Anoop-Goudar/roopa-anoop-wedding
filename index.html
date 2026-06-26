@@ -2116,35 +2116,60 @@ Quick reference for what to change in this file.
   }, 2000);
 
 
-  // ── Unmute button for autoplay video ─────────────────────
+  // ── Video: play/pause with viewport visibility ────────────
   (function () {
     var vid = document.getElementById('invite-vid');
     var btn = document.getElementById('unmute-btn');
     if (!vid || !btn) return;
 
+    var manuallyPaused = false;
+
+    // Unmute button
     btn.addEventListener('click', function () {
       vid.muted = false;
       vid.currentTime = 0;
       vid.play();
       btn.classList.add('hidden');
+      manuallyPaused = false;
     });
 
-    // If the user already interacted with the page before reaching the video
-    // (e.g. clicked the theme toggle), try to autoplay with sound immediately.
-    vid.addEventListener('canplay', function tryAutoSound() {
-      vid.muted = false;
-      vid.play().then(function () {
-        btn.classList.add('hidden');
-      }).catch(function () {
-        vid.muted = true; // browser blocked it — keep muted, show button
-      });
-      vid.removeEventListener('canplay', tryAutoSound);
-    }, { once: true });
+    // Track manual pause (not triggered by our own visibility code)
+    vid.addEventListener('pause', function () {
+      if (!vid.ended) manuallyPaused = true;
+    });
+    vid.addEventListener('play', function () {
+      manuallyPaused = false;
+    });
 
     // Reset to poster thumbnail when video finishes
     vid.addEventListener('ended', function () {
-      vid.load(); // resets to poster without replaying
+      manuallyPaused = false;
+      vid.load();
+      btn.classList.remove('hidden');
     });
+
+    // Play when scrolled into view, pause when scrolled away
+    var vidObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          if (!manuallyPaused && vid.paused && !vid.ended) {
+            vid.play().then(function () {
+              btn.classList.add('hidden');
+            }).catch(function () {
+              vid.muted = true;
+            });
+          }
+        } else {
+          if (!vid.paused) {
+            manuallyPaused = false; // scrolling away is not a manual pause
+            vid.pause();
+            manuallyPaused = false;
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    vidObserver.observe(vid);
   }());
 
 })();
