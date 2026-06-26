@@ -131,6 +131,24 @@ Quick reference for what to change in this file.
   [data-theme="pastel"] footer .made { color: #E8CDD8; }
   [data-theme="pastel"] footer .kn-blessing { color: #F0DDE9; }
 
+  /* Toran SVG — soften the hardcoded greens and red */
+  [data-theme="pastel"] .toran { filter: hue-rotate(290deg) saturate(0.45) brightness(1.05); }
+
+  /* RSVP form — hardcoded border colours */
+  [data-theme="pastel"] .field input,
+  [data-theme="pastel"] .field select,
+  [data-theme="pastel"] .field textarea {
+    border-bottom-color: rgba(155, 107, 138, 0.35);
+  }
+  [data-theme="pastel"] .field input:focus,
+  [data-theme="pastel"] .field select:focus,
+  [data-theme="pastel"] .field textarea:focus {
+    border-bottom-color: var(--gold-deep);
+  }
+  [data-theme="pastel"] .pillgroup label {
+    border-color: rgba(155, 107, 138, 0.35);
+  }
+
   /* Gallery photo placeholders */
   [data-theme="pastel"] .ms-1 { background: linear-gradient(135deg, #D4AABF, #B98AAA); }
   [data-theme="pastel"] .ms-2 { background: linear-gradient(135deg, #E0C8A8, #B98AAA); }
