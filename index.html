@@ -1929,56 +1929,11 @@ Quick reference for what to change in this file.
 
 
   // ============================================================
-  // RSVP — submits silently to Google Forms, shows custom thank-you
+  // Wishes Wall
   // ============================================================
-  const GFORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScssg_X641EHUL80qq-7i0aZN4yXJdZOim8xUB-32EG6Zd_4w/formResponse';
-  const ENTRY = {
-    name:     'entry.1145137192',
-    email:    'entry.854653814',
-    attending:'entry.85512520',
-    guests:   'entry.1947648271',
-    message:  'entry.426639135',
-  };
-
-  const rsvpForm = document.getElementById('rsvp-form');
-  const thanks   = document.getElementById('thanks');
-
-  rsvpForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const name     = rsvpForm.querySelector('#rsvp-name').value.trim();
-    const email    = rsvpForm.querySelector('#rsvp-email').value.trim();
-    const attending= (rsvpForm.querySelector('[name="attending"]:checked') || {}).value || '';
-    const guests   = rsvpForm.querySelector('#rsvp-guests').value;
-    const message  = rsvpForm.querySelector('#rsvp-message').value.trim();
-
-    if (!name || !email) { rsvpForm.reportValidity(); return; }
-
-    const body = new URLSearchParams();
-    body.append(ENTRY.name,      name);
-    body.append(ENTRY.email,     email);
-    body.append(ENTRY.attending, attending);
-    body.append(ENTRY.guests,    guests);
-    if (message) body.append(ENTRY.message, message);
-
-    // mode:'no-cors' — response is opaque but data is received by Google
-    fetch(GFORM_ACTION, { method: 'POST', mode: 'no-cors', body });
-
-    rsvpForm.style.transition = 'opacity .35s ease, transform .35s ease';
-    rsvpForm.style.opacity = '0';
-    rsvpForm.style.transform = 'scale(.96)';
-    setTimeout(function () {
-      rsvpForm.style.display = 'none';
-      thanks.style.display = 'block';
-      requestAnimationFrame(function () {
-        thanks.classList.add('show');
-      });
-    }, 360);
-  });
-
-  // ============================================================
-  // Wishes Wall — curated wishes, updated manually as RSVPs come in
-  // ============================================================
-  const WISHES = [
+  const SHEET_ID      = '1_7NhZWwBy8eK2U1YboLsOYq5mZ43hz5c8JTCxazJaCo';
+  const SHEETS_KEY    = 'AIzaSyASE3Y-Qp6-VzqR4deguWrCkgVMXWCVCLA';
+  const SAMPLE_WISHES = [
     { name: 'Priya & Karthik', message: 'Wishing you both a lifetime of laughter, love, and little adventures. So happy for you two.' },
     { name: 'Ravi Kumar',       message: 'May your love only deepen with each passing day. Bengaluru is going to glow that week!' },
     { name: 'ಲಕ್ಷ್ಮಿ ಆಂಟಿ',     message: 'ನಿಮ್ಮಿಬ್ಬರಿಗೂ ಜೀವನದಲ್ಲಿ ಸುಖ, ಶಾಂತಿ ಮತ್ತು ಪ್ರೀತಿ ಸದಾ ತುಂಬಿರಲಿ. ಶುಭಾಶಯಗಳು!' }
@@ -1994,20 +1949,97 @@ Quick reference for what to change in this file.
 
   function escapeHtml(s) {
     return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/”/g, '&quot;')
-      .replace(/'/g, '&#39;');
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/”/g, '&quot;').replace(/'/g, '&#39;');
   }
 
-  document.getElementById('wishes-list').innerHTML = WISHES.map(function (w) {
+  function wishCard(w) {
     return '<div class=”wish”>'
       + '<span class=”floral” aria-hidden=”true”>' + FLORAL_SVG + '</span>'
       + '<p>”' + escapeHtml(w.message) + '”</p>'
       + '<div class=”author”>— ' + escapeHtml(w.name) + '</div>'
       + '</div>';
-  }).join('');
+  }
+
+  var liveWishes = SAMPLE_WISHES.slice();
+  var wishesList = document.getElementById('wishes-list');
+
+  function renderWishes() {
+    wishesList.innerHTML = liveWishes.map(wishCard).join('');
+  }
+  renderWishes();
+
+  // Fetch real wishes from the linked Google Sheet (column F = message, column B = name)
+  // Sheet must be shared as “Anyone with the link — Viewer”
+  (function fetchSheetWishes() {
+    var range = encodeURIComponent('Form Responses 1!B2:F');
+    var url   = 'https://sheets.googleapis.com/v4/spreadsheets/'
+                + SHEET_ID + '/values/' + range + '?key=' + SHEETS_KEY;
+    fetch(url)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!data.values) return;
+        var fromSheet = data.values
+          .filter(function (row) { return row[4] && row[4].trim(); })
+          .map(function (row) { return { name: row[0] || 'A Guest', message: row[4].trim() }; })
+          .reverse(); // most recent first
+        if (fromSheet.length === 0) return;
+        liveWishes = fromSheet.concat(SAMPLE_WISHES);
+        renderWishes();
+      })
+      .catch(function () { /* sheet not yet shared or no responses — keep samples */ });
+  }());
+
+
+  // ============================================================
+  // RSVP — submits silently to Google Forms, shows custom thank-you
+  // ============================================================
+  const GFORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScssg_X641EHUL80qq-7i0aZN4yXJdZOim8xUB-32EG6Zd_4w/formResponse';
+  const ENTRY = {
+    name:     'entry.1145137192',
+    email:    'entry.854653814',
+    attending:'entry.85512520',
+    guests:   'entry.1947648271',
+    message:  'entry.426639135',
+  };
+
+  var rsvpForm = document.getElementById('rsvp-form');
+  var thanks   = document.getElementById('thanks');
+
+  rsvpForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name     = rsvpForm.querySelector('#rsvp-name').value.trim();
+    var email    = rsvpForm.querySelector('#rsvp-email').value.trim();
+    var attending= (rsvpForm.querySelector('[name=”attending”]:checked') || {}).value || '';
+    var guests   = rsvpForm.querySelector('#rsvp-guests').value;
+    var message  = rsvpForm.querySelector('#rsvp-message').value.trim();
+
+    if (!name || !email) { rsvpForm.reportValidity(); return; }
+
+    var body = new URLSearchParams();
+    body.append(ENTRY.name,      name);
+    body.append(ENTRY.email,     email);
+    body.append(ENTRY.attending, attending);
+    body.append(ENTRY.guests,    guests);
+    if (message) body.append(ENTRY.message, message);
+
+    fetch(GFORM_ACTION, { method: 'POST', mode: 'no-cors', body: body });
+
+    // Optimistically prepend the new wish so it appears immediately
+    if (message) {
+      liveWishes = [{ name: name, message: message }].concat(liveWishes);
+      renderWishes();
+    }
+
+    rsvpForm.style.transition = 'opacity .35s ease, transform .35s ease';
+    rsvpForm.style.opacity = '0';
+    rsvpForm.style.transform = 'scale(.96)';
+    setTimeout(function () {
+      rsvpForm.style.display = 'none';
+      thanks.style.display = 'block';
+      requestAnimationFrame(function () { thanks.classList.add('show'); });
+    }, 360);
+  });
 
 
   // ============================================================
