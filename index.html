@@ -2088,25 +2088,22 @@ Quick reference for what to change in this file.
   // interacts with the page. If blocked, start on first interaction
   // anywhere — but skip clicks on the player button itself, since
   // its own handler already toggles playback.
-  // Start music on first scroll (Chrome requires a user gesture)
+  // Start music on first real user gesture (click or touch anywhere).
+  // Scroll is intentionally excluded — Chrome does not count it as a
+  // user activation and will block the play() call silently.
+  // Listeners stay active until playback actually succeeds.
   player.classList.add('awaiting');
-  var cleanup = function () {
-    window.removeEventListener('scroll',     kickoff, true);
-    window.removeEventListener('touchstart', kickoff, true);
-    window.removeEventListener('click',      kickoff, true);
-    player.classList.remove('awaiting');
-  };
-  var kickoff = function (e) {
-    if (e && e.target && (e.target === playBtn || playBtn.contains(e.target))) {
-      cleanup();
-      return;
-    }
-    startPlaying();
-    cleanup();
-  };
-  window.addEventListener('scroll',     kickoff, { once: true, capture: true });
-  window.addEventListener('touchstart', kickoff, { once: true, capture: true });
-  window.addEventListener('click',      kickoff, { once: true, capture: true });
+  function tryStartMusic(e) {
+    if (e && e.target && (e.target === playBtn || playBtn.contains(e.target))) return;
+    audio.play().then(function () {
+      setPlayingUI(true);
+      window.removeEventListener('click',      tryStartMusic, true);
+      window.removeEventListener('touchstart', tryStartMusic, true);
+      player.classList.remove('awaiting');
+    }).catch(function () { /* still blocked — keep listeners active */ });
+  }
+  window.addEventListener('click',      tryStartMusic, true);
+  window.addEventListener('touchstart', tryStartMusic, true);
 
 
   // ── Video: play/pause with viewport visibility ────────────
