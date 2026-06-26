@@ -106,69 +106,229 @@ Quick reference for what to change in this file.
   }
 
 
-  /* ── Pastel theme ───────────────────────────────────────────── */
+  /* ══════════════════════════════════════════════════════════════
+     PASTEL THEME — 2026 Edition
+     Palette: blush rose · soft lavender · sage · warm honey
+     Aesthetic: glass morphism · gradient depth · airy elegance
+     ══════════════════════════════════════════════════════════════ */
   [data-theme="pastel"] {
-    --rose-deep:    #9B6B8A;
-    --rose:         #B98AAA;
-    --mauve:        #CFA8C0;
-    --mauve-soft:   #F5E6F0;
-    --gold:         #C4956A;
-    --gold-soft:    #F2DFD0;
-    --gold-deep:    #A07050;
-    --saffron:      #D4A574;
-    --ivory:        #FDFBF9;
-    --ivory-warm:   #FAF3EE;
-    --charcoal:     #3D2E35;
-    --charcoal-soft:#8C7080;
-    --shadow-soft:  0 8px 32px rgba(155, 107, 138, 0.10);
-    --shadow-card:  0 2px 16px rgba(155, 107, 138, 0.12);
-    --border-gold:  1px solid rgba(196, 149, 106, 0.30);
+    --rose-deep:    #8B5E7A;
+    --rose:         #B8849E;
+    --mauve:        #D4AABF;
+    --mauve-soft:   #F8EEF4;
+    --gold:         #C8985C;
+    --gold-soft:    #F5E4CC;
+    --gold-deep:    #A07848;
+    --saffron:      #D4A870;
+    --ivory:        #FDF8F5;
+    --ivory-warm:   #FAF0F5;
+    --charcoal:     #2E2030;
+    --charcoal-soft:#7A6070;
+    --shadow-soft:  0 12px 48px rgba(139, 94, 122, 0.13);
+    --shadow-card:  0 4px 24px rgba(139, 94, 122, 0.11);
+    --border-gold:  1px solid rgba(184, 132, 158, 0.25);
+
+    /* Pastel-only extras */
+    --pk-blush:     #FDEEF4;
+    --pk-lavender:  #F0ECF8;
+    --pk-sage:      #E8F2EC;
+    --pk-peach:     #FDF0E8;
+    --pk-glass:     rgba(255, 255, 255, 0.62);
+    --pk-glass-border: rgba(255, 255, 255, 0.85);
+    --pk-glow:      0 8px 40px rgba(184, 132, 158, 0.22), 0 2px 12px rgba(200, 152, 92, 0.12);
   }
 
-  /* Footer hardcoded colours */
-  [data-theme="pastel"] footer { background: #9B6B8A; color: #F9EFF6; }
-  [data-theme="pastel"] footer .years { color: #F0DDE9; }
-  [data-theme="pastel"] footer .made { color: #E8CDD8; }
-  [data-theme="pastel"] footer .kn-blessing { color: #F0DDE9; }
+  /* ── Page background: multi-stop gradient aurora ── */
+  [data-theme="pastel"] body {
+    background: linear-gradient(160deg,
+      #FDF4F8 0%, #F8F0FC 20%, #FDF4EE 42%,
+      #F4F8F4 65%, #FDF0F4 85%, #FBF4FD 100%);
+    background-attachment: fixed;
+  }
 
-  /* Hero blessing and tagline — unify to same subtle tone */
-  [data-theme="pastel"] .hero .blessing { color: var(--charcoal-soft); }
+  /* ── Toran: soft petal tones ── */
+  [data-theme="pastel"] .toran {
+    filter: hue-rotate(300deg) saturate(0.38) brightness(1.08) contrast(0.9);
+  }
 
-  /* Toran SVG — soften the hardcoded greens and red */
-  [data-theme="pastel"] .toran { filter: hue-rotate(290deg) saturate(0.45) brightness(1.05); }
+  /* ── Section backgrounds: gentle gradient washes ── */
+  [data-theme="pastel"] .hero {
+    background: linear-gradient(175deg, #FDF4F8 0%, #F8F0FC 50%, #FDF4EE 100%) !important;
+  }
+  [data-theme="pastel"] #invite {
+    background: linear-gradient(160deg, #F8F0FC 0%, #FDF4EE 100%) !important;
+  }
+  [data-theme="pastel"] #countdown {
+    background: linear-gradient(160deg, #FDF0F4 0%, #F4F8F4 100%) !important;
+  }
+  [data-theme="pastel"] #gallery {
+    background: linear-gradient(160deg, #F4F8F4 0%, #FDF4F8 100%) !important;
+  }
+  [data-theme="pastel"] #events {
+    background: linear-gradient(160deg, #FDF4F8 0%, #F8F0FC 100%) !important;
+  }
+  [data-theme="pastel"] #venue {
+    background: linear-gradient(160deg, #F8F0FC 0%, #FDF4EE 100%) !important;
+  }
+  [data-theme="pastel"] #rsvp {
+    background: linear-gradient(160deg, #FDF0F4 0%, #F8F0FC 100%) !important;
+  }
+  [data-theme="pastel"] #wishes {
+    background: linear-gradient(160deg, #FDF4F8 0%, #F4F8F4 100%) !important;
+  }
 
-  /* RSVP form — hardcoded border colours */
+  /* ── Headings: rich deep mauve ── */
+  [data-theme="pastel"] h2 { color: #6B3F5E; }
+  [data-theme="pastel"] .hero h1 { color: #7A4E70; }
+  [data-theme="pastel"] .hero h1 .amp { color: #C8985C; }
+
+  /* ── Blessing & tagline: unified soft tone ── */
+  [data-theme="pastel"] .hero .blessing { color: #A08898; letter-spacing: 5px; }
+  [data-theme="pastel"] .hero .blessing.kn { color: #9B6B8A; }
+  [data-theme="pastel"] .hero .tagline { color: #7A6070; font-style: italic; }
+  [data-theme="pastel"] .hero .kn-tagline { color: #9B7888; }
+
+  /* ── Date chips in hero ── */
+  [data-theme="pastel"] .hero .dates .date-chip {
+    background: var(--pk-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--pk-glass-border);
+    box-shadow: var(--pk-glow);
+  }
+
+  /* ── Countdown tiles: glass morphism ── */
+  [data-theme="pastel"] .flip-card,
+  [data-theme="pastel"] .count-tile {
+    background: var(--pk-glass) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--pk-glass-border) !important;
+    box-shadow: var(--pk-glow) !important;
+  }
+
+  /* ── Event cards: glass with sage/blush tint alternating ── */
+  [data-theme="pastel"] .event-card {
+    background: var(--pk-glass) !important;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--pk-glass-border) !important;
+    box-shadow: var(--pk-glow) !important;
+  }
+  [data-theme="pastel"] .event-card:first-child { background: rgba(253,238,244,0.72) !important; }
+  [data-theme="pastel"] .event-card:last-child  { background: rgba(240,236,248,0.72) !important; }
+
+  /* ── Buttons: gradient pill with soft glow ── */
+  [data-theme="pastel"] .btn-primary {
+    background: linear-gradient(135deg, #C4849A, #9B6B8A) !important;
+    border-color: transparent !important;
+    box-shadow: 0 4px 20px rgba(155, 107, 138, 0.35) !important;
+    color: #fff !important;
+  }
+  [data-theme="pastel"] .btn-primary:hover {
+    background: linear-gradient(135deg, #B8789C, #8A5A7A) !important;
+    box-shadow: 0 6px 28px rgba(155, 107, 138, 0.45) !important;
+    transform: translateY(-1px);
+  }
+  [data-theme="pastel"] .btn {
+    border-color: rgba(184, 132, 158, 0.45) !important;
+    color: #8B5E7A !important;
+  }
+  [data-theme="pastel"] .btn:hover {
+    background: rgba(184, 132, 158, 0.12) !important;
+    border-color: #B8849E !important;
+  }
+
+  /* ── RSVP form: glass card ── */
+  [data-theme="pastel"] .rsvp-form {
+    background: var(--pk-glass) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--pk-glass-border) !important;
+    box-shadow: var(--pk-glow) !important;
+  }
   [data-theme="pastel"] .field input,
   [data-theme="pastel"] .field select,
   [data-theme="pastel"] .field textarea {
-    border-bottom-color: rgba(155, 107, 138, 0.35);
+    border-bottom-color: rgba(184, 132, 158, 0.35);
   }
   [data-theme="pastel"] .field input:focus,
   [data-theme="pastel"] .field select:focus,
   [data-theme="pastel"] .field textarea:focus {
-    border-bottom-color: var(--gold-deep);
+    border-bottom-color: #B8849E;
   }
   [data-theme="pastel"] .pillgroup label {
-    border-color: rgba(155, 107, 138, 0.35);
+    border-color: rgba(184, 132, 158, 0.35);
+  }
+  [data-theme="pastel"] .pillgroup input:checked + label {
+    background: linear-gradient(135deg, #C4849A, #9B6B8A) !important;
+    border-color: transparent !important;
+    box-shadow: 0 2px 12px rgba(155, 107, 138, 0.3);
   }
 
-  /* Gallery photo placeholders */
-  [data-theme="pastel"] .ms-1 { background: linear-gradient(135deg, #D4AABF, #B98AAA); }
-  [data-theme="pastel"] .ms-2 { background: linear-gradient(135deg, #E0C8A8, #B98AAA); }
-  [data-theme="pastel"] .ms-3 { background: linear-gradient(135deg, #C4A8C0, #D4AABF); }
-  [data-theme="pastel"] .ms-4 { background: linear-gradient(135deg, #D9C48C, #C4956A); }
-  [data-theme="pastel"] .ms-5 { background: linear-gradient(135deg, #B98AAA, #D9C48C); }
-  [data-theme="pastel"] .ms-6 { background: linear-gradient(135deg, #C4A8C0, #D9C48C); }
-  [data-theme="pastel"] .pc-1 { background: linear-gradient(135deg, #C4A8C0 0%, #D4AABF 100%); }
-  [data-theme="pastel"] .pc-2 { background: linear-gradient(135deg, #D9C48C 0%, #B98AAA 100%); }
-  [data-theme="pastel"] .pc-3 { background: linear-gradient(135deg, #D4AABF 0%, #FAF3EE 100%); }
-  [data-theme="pastel"] .pc-4 { background: linear-gradient(135deg, #B98AAA 0%, #D9C48C 100%); }
-  [data-theme="pastel"] .pc-5 { background: linear-gradient(135deg, #C4A8C0 0%, #D9C48C 100%); }
-  [data-theme="pastel"] .pc-6 { background: linear-gradient(135deg, #D4AABF 0%, #C4A8C0 100%); }
-  [data-theme="pastel"] .pc-7 { background: linear-gradient(135deg, #D9C48C 0%, #D4AABF 100%); }
-  [data-theme="pastel"] .pc-8 { background: linear-gradient(135deg, #B98AAA 0%, #D4AABF 100%); }
-  [data-theme="pastel"] .pc-9 { background: linear-gradient(135deg, #A8C4A8 0%, #B98AAA 100%); }
-  [data-theme="pastel"] .pc-10{ background: linear-gradient(135deg, #C4A8C0 0%, #D9C48C 100%); }
+  /* ── Wishes cards: glass morphism ── */
+  [data-theme="pastel"] .wish {
+    background: var(--pk-glass) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--pk-glass-border) !important;
+    box-shadow: var(--pk-glow) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  [data-theme="pastel"] .wish:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(139, 94, 122, 0.18), 0 4px 16px rgba(200, 152, 92, 0.14) !important;
+  }
+
+  /* ── Thanks card: glass ── */
+  [data-theme="pastel"] .thanks {
+    background: var(--pk-glass) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--pk-glass-border) !important;
+    box-shadow: var(--pk-glow) !important;
+  }
+
+  /* ── Divider lines: soft rose gradient ── */
+  [data-theme="pastel"] .divider::before,
+  [data-theme="pastel"] .divider::after {
+    background: linear-gradient(90deg, transparent, #D4AABF, transparent) !important;
+  }
+
+  /* ── Section eyebrow labels ── */
+  [data-theme="pastel"] .eyebrow { color: #B8849E; }
+
+  /* ── kn-sub (Kannada subtitles) ── */
+  [data-theme="pastel"] .kn-sub { color: #B8849E; }
+
+  /* ── Footer: rich gradient ── */
+  [data-theme="pastel"] footer {
+    background: linear-gradient(135deg, #6B3F5E 0%, #8B5E7A 50%, #7A4E6A 100%) !important;
+    color: #FDF0F8;
+  }
+  [data-theme="pastel"] footer .signoff { color: #F5E4CC; }
+  [data-theme="pastel"] footer .years { color: #EDD8E8; }
+  [data-theme="pastel"] footer .made { color: #E0C8D8; }
+  [data-theme="pastel"] footer .kn-blessing { color: #EDD8E8; }
+  [data-theme="pastel"] footer .heart { color: #F5B8D0; }
+
+  /* ── Gallery placeholders: soft petal gradients ── */
+  [data-theme="pastel"] .ms-1 { background: linear-gradient(135deg, #F0D4E4, #D4AABF); }
+  [data-theme="pastel"] .ms-2 { background: linear-gradient(135deg, #E8D8C8, #D4AABF); }
+  [data-theme="pastel"] .ms-3 { background: linear-gradient(135deg, #DCD4EC, #D4AABF); }
+  [data-theme="pastel"] .ms-4 { background: linear-gradient(135deg, #E8E4C4, #C8985C); }
+  [data-theme="pastel"] .ms-5 { background: linear-gradient(135deg, #D4AABF, #E8E4C4); }
+  [data-theme="pastel"] .ms-6 { background: linear-gradient(135deg, #D8ECD8, #D4AABF); }
+  [data-theme="pastel"] .pc-1 { background: linear-gradient(135deg, #F0D4E4 0%, #DCD4EC 100%); }
+  [data-theme="pastel"] .pc-2 { background: linear-gradient(135deg, #E8E4C4 0%, #D4AABF 100%); }
+  [data-theme="pastel"] .pc-3 { background: linear-gradient(135deg, #F0D4E4 0%, #FDF8F5 100%); }
+  [data-theme="pastel"] .pc-4 { background: linear-gradient(135deg, #D4AABF 0%, #E8E4C4 100%); }
+  [data-theme="pastel"] .pc-5 { background: linear-gradient(135deg, #DCD4EC 0%, #E8E4C4 100%); }
+  [data-theme="pastel"] .pc-6 { background: linear-gradient(135deg, #F0D4E4 0%, #DCD4EC 100%); }
+  [data-theme="pastel"] .pc-7 { background: linear-gradient(135deg, #E8E4C4 0%, #F0D4E4 100%); }
+  [data-theme="pastel"] .pc-8 { background: linear-gradient(135deg, #D4AABF 0%, #F0D4E4 100%); }
+  [data-theme="pastel"] .pc-9 { background: linear-gradient(135deg, #D8ECD8 0%, #D4AABF 100%); }
+  [data-theme="pastel"] .pc-10{ background: linear-gradient(135deg, #DCD4EC 0%, #E8E4C4 100%); }
 
   /* Theme toggle */
   .theme-toggle {
