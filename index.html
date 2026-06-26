@@ -106,6 +106,55 @@ Quick reference for what to change in this file.
   }
 
 
+  /* ── Pastel theme ───────────────────────────────────────────── */
+  [data-theme="pastel"] {
+    --rose-deep:    #9B6B8A;
+    --rose:         #B98AAA;
+    --mauve:        #CFA8C0;
+    --mauve-soft:   #F5E6F0;
+    --gold:         #C4956A;
+    --gold-soft:    #F2DFD0;
+    --gold-deep:    #A07050;
+    --saffron:      #D4A574;
+    --ivory:        #FDFBF9;
+    --ivory-warm:   #FAF3EE;
+    --charcoal:     #3D2E35;
+    --charcoal-soft:#8C7080;
+    --shadow-soft:  0 8px 32px rgba(155, 107, 138, 0.10);
+    --shadow-card:  0 2px 16px rgba(155, 107, 138, 0.12);
+    --border-gold:  1px solid rgba(196, 149, 106, 0.30);
+  }
+
+  /* Theme toggle */
+  .theme-toggle {
+    position: fixed;
+    bottom: 84px;
+    right: 20px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1.5px solid var(--border-gold);
+    border-radius: 40px;
+    padding: 8px 14px 8px 10px;
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--charcoal-soft);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .theme-toggle:hover { box-shadow: var(--shadow-card); border-color: var(--gold); }
+  .theme-toggle .pastel-dot {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: conic-gradient(#F4B8CE 0deg 90deg, #C8A8D8 90deg 180deg, #A8C8D8 180deg 270deg, #C4956A 270deg 360deg);
+    flex-shrink: 0;
+  }
+  /* ─────────────────────────────────────────────────────────── */
+
   /* Kannada helper styles */
   .kn { font-family: var(--kannada); }
   .kn-sub {
@@ -1647,6 +1696,14 @@ Quick reference for what to change in this file.
 
 
 <!-- ============================================================
+     THEME TOGGLE — Pastel
+     ============================================================ -->
+<button class="theme-toggle" id="theme-toggle" aria-label="Toggle pastel theme">
+  <span class="pastel-dot"></span>
+  <span id="theme-label">Pastel</span>
+</button>
+
+<!-- ============================================================
      FLOATING MUSIC PLAYER
      ============================================================ -->
 <div class="player" id="player" aria-label="Music player">
@@ -1661,6 +1718,30 @@ Quick reference for what to change in this file.
   <audio id="our-audio" preload="metadata" src="assets/music/our-song.mp3"></audio>
 </div>
 
+
+<!-- Pastel theme toggle -->
+<script>
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  var label = document.getElementById('theme-label');
+  var PASTEL = 'pastel';
+  function apply(theme) {
+    if (theme === PASTEL) {
+      document.documentElement.setAttribute('data-theme', PASTEL);
+      label.textContent = 'Classic';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      label.textContent = 'Pastel';
+    }
+  }
+  apply(localStorage.getItem('wedding-theme') || '');
+  btn.addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === PASTEL ? '' : PASTEL;
+    localStorage.setItem('wedding-theme', next);
+    apply(next);
+  });
+})();
+</script>
 
 <script>
 (function () {
