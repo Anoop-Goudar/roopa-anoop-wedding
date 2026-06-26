@@ -906,18 +906,49 @@ Quick reference for what to change in this file.
     .carousel-btn.next { right: -14px; }
   }
 
-  /* ── Gallery carousel ── */
+  /* ── Gallery: grid on desktop, carousel on mobile ── */
   .gallery {
-    overflow: hidden;
-    border-radius: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    grid-auto-flow: dense;
   }
   .gallery .carousel-track {
-    gap: 0;
+    display: contents; /* children participate directly in the grid */
   }
-  .gallery .carousel-track .photo-card {
-    flex: 0 0 100%;
-    min-width: 0;
-    width: 100%;
+  #gallery .carousel-btn,
+  #gallery .carousel-dots { display: none; }
+  #gallery .carousel-wrap { padding: 0; }
+
+  @media (max-width: 900px) {
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .photo-card.wide { grid-column: span 2; }
+  }
+
+  @media (max-width: 600px) {
+    /* Switch to carousel on mobile */
+    #gallery .carousel-btn { display: flex; }
+    #gallery .carousel-dots { display: flex; }
+    #gallery .carousel-wrap { padding: 0 28px; }
+    .gallery {
+      display: block;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    .gallery .carousel-track {
+      display: flex;
+      gap: 0;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .gallery .carousel-track .photo-card {
+      flex: 0 0 100%;
+      min-width: 0;
+      width: 100%;
+    }
+    .photo-card.wide { grid-column: unset; }
+    .photo-card.wide .img { aspect-ratio: 16 / 9; }
+    .photo-card.tall .img { aspect-ratio: 3 / 4; }
   }
   .photo-card {
     border-radius: 14px;
@@ -975,9 +1006,6 @@ Quick reference for what to change in this file.
   .pc-9 { background: linear-gradient(135deg, #4A7C3A 0%, #8E3A52 100%); }
   .pc-10{ background: linear-gradient(135deg, #6E2A3A 0%, #C9A84C 100%); }
 
-  /* gallery carousel — wide/tall modifiers kept for aspect-ratio but no longer need grid spans */
-  .photo-card.wide .img { aspect-ratio: 16 / 9; }
-  .photo-card.tall .img { aspect-ratio: 3 / 4; }
 
   /* Lightbox */
   .lightbox {
