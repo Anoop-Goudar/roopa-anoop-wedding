@@ -2088,32 +2088,25 @@ Quick reference for what to change in this file.
   // interacts with the page. If blocked, start on first interaction
   // anywhere — but skip clicks on the player button itself, since
   // its own handler already toggles playback.
-  // Auto-start after 2 s; if browser blocks autoplay, try on first interaction
-  setTimeout(function () {
-    startPlaying().then(function (ok) {
-      if (ok) return;
-      player.classList.add('awaiting');
-      var cleanup = function () {
-        window.removeEventListener('click',      kickoff, true);
-        window.removeEventListener('touchstart', kickoff, true);
-        window.removeEventListener('keydown',    kickoff, true);
-        window.removeEventListener('scroll',     kickoff, true);
-        player.classList.remove('awaiting');
-      };
-      var kickoff = function (e) {
-        if (e && e.target && (e.target === playBtn || playBtn.contains(e.target))) {
-          cleanup();
-          return;
-        }
-        startPlaying();
-        cleanup();
-      };
-      window.addEventListener('click',      kickoff, true);
-      window.addEventListener('touchstart', kickoff, true);
-      window.addEventListener('keydown',    kickoff, true);
-      window.addEventListener('scroll',     kickoff, true);
-    });
-  }, 2000);
+  // Start music on first scroll (Chrome requires a user gesture)
+  player.classList.add('awaiting');
+  var cleanup = function () {
+    window.removeEventListener('scroll',     kickoff, true);
+    window.removeEventListener('touchstart', kickoff, true);
+    window.removeEventListener('click',      kickoff, true);
+    player.classList.remove('awaiting');
+  };
+  var kickoff = function (e) {
+    if (e && e.target && (e.target === playBtn || playBtn.contains(e.target))) {
+      cleanup();
+      return;
+    }
+    startPlaying();
+    cleanup();
+  };
+  window.addEventListener('scroll',     kickoff, { once: true, capture: true });
+  window.addEventListener('touchstart', kickoff, { once: true, capture: true });
+  window.addEventListener('click',      kickoff, { once: true, capture: true });
 
 
   // ── Video: play/pause with viewport visibility ────────────
