@@ -2349,8 +2349,14 @@ Quick reference for what to change in this file.
       return track.offsetWidth;
     }
 
+    function isFlexCarousel() {
+      return getComputedStyle(track).display === 'flex';
+    }
+
     function setSizes() {
+      if (!isFlexCarousel()) return;
       var w = getItemWidth();
+      if (!w) return;
       for (var i = 0; i < total; i++) {
         items[i].style.width = w + 'px';
         items[i].style.flexShrink = '0';
@@ -2359,7 +2365,8 @@ Quick reference for what to change in this file.
 
     function goTo(n) {
       idx = (n + total) % total;
-      track.style.transform = 'translateX(-' + (idx * getItemWidth()) + 'px)';
+      var w = isFlexCarousel() ? getItemWidth() : 0;
+      track.style.transform = w ? 'translateX(-' + (idx * w) + 'px)' : 'translateX(-' + (idx * 100) + '%)';
       updateDots();
     }
 
