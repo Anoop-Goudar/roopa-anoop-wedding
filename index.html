@@ -945,10 +945,16 @@ Quick reference for what to change in this file.
       flex: 0 0 100%;
       min-width: 0;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* Uniform aspect ratio for all slides in carousel */
+    .gallery .carousel-track .photo-card .img {
+      aspect-ratio: 4 / 3 !important;
+      width: 100%;
     }
     .photo-card.wide { grid-column: unset; }
-    .photo-card.wide .img { aspect-ratio: 16 / 9; }
-    .photo-card.tall .img { aspect-ratio: 3 / 4; }
   }
   .photo-card {
     border-radius: 14px;
