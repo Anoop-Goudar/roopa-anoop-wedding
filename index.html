@@ -1439,6 +1439,18 @@ Quick reference for what to change in this file.
     flex: 0 0 100%;
     min-width: 0;
     margin-bottom: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .wishes .carousel-track .wish p {
+    padding-right: 0;
+  }
+  .wishes .carousel-track .wish .floral {
+    position: static;
+    margin-bottom: 10px;
   }
   .wish {
     background: #fff;
@@ -2513,12 +2525,13 @@ Quick reference for what to change in this file.
   player.classList.add('awaiting');
   function tryStartMusic(e) {
     if (e && e.target && (e.target === playBtn || playBtn.contains(e.target))) return;
-    audio.play().then(function () {
-      setPlayingUI(true);
-      window.removeEventListener('click',      tryStartMusic, true);
-      window.removeEventListener('touchstart', tryStartMusic, true);
-      player.classList.remove('awaiting');
-    }).catch(function () { /* still blocked — keep listeners active */ });
+    startPlaying().then(function (ok) {
+      if (ok) {
+        window.removeEventListener('click',      tryStartMusic, true);
+        window.removeEventListener('touchstart', tryStartMusic, true);
+        player.classList.remove('awaiting');
+      }
+    });
   }
   window.addEventListener('click',      tryStartMusic, true);
   window.addEventListener('touchstart', tryStartMusic, true);
