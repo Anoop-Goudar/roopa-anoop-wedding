@@ -844,11 +844,80 @@ Quick reference for what to change in this file.
   /* ============================================================
      GALLERY
      ============================================================ */
+  /* ── Carousel shared styles ── */
+  .carousel-wrap {
+    position: relative;
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255,255,255,0.88);
+    border: 1.5px solid var(--border-gold);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-card);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    color: var(--rose-deep);
+    padding: 0;
+  }
+  .carousel-btn:hover {
+    background: var(--rose);
+    color: #fff;
+    box-shadow: 0 6px 24px rgba(139,58,82,0.22);
+    transform: translateY(-50%) scale(1.08);
+  }
+  .carousel-btn.prev { left: -22px; }
+  .carousel-btn.next { right: -22px; }
+  .carousel-btn svg { width: 20px; height: 20px; pointer-events: none; }
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .carousel-dots span {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--mauve);
+    opacity: 0.38;
+    transition: opacity 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .carousel-dots span.active {
+    opacity: 1;
+    transform: scale(1.35);
+    background: var(--rose-deep);
+  }
+  @media (max-width: 600px) {
+    .carousel-btn { width: 36px; height: 36px; }
+    .carousel-btn.prev { left: -14px; }
+    .carousel-btn.next { right: -14px; }
+  }
+
+  /* ── Gallery carousel ── */
   .gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-    grid-auto-flow: dense;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+  .gallery .carousel-track {
+    gap: 0;
+  }
+  .gallery .carousel-track .photo-card {
+    flex: 0 0 100%;
+    min-width: 0;
+    width: 100%;
   }
   .photo-card {
     border-radius: 14px;
@@ -906,14 +975,9 @@ Quick reference for what to change in this file.
   .pc-9 { background: linear-gradient(135deg, #4A7C3A 0%, #8E3A52 100%); }
   .pc-10{ background: linear-gradient(135deg, #6E2A3A 0%, #C9A84C 100%); }
 
-  @media (max-width: 900px) {
-    .gallery { grid-template-columns: repeat(2, 1fr); }
-    .photo-card.wide { grid-column: span 2; }
-  }
-  @media (max-width: 480px) {
-    .gallery { grid-template-columns: 1fr; }
-    .photo-card.wide { grid-column: span 1; }
-  }
+  /* gallery carousel — wide/tall modifiers kept for aspect-ratio but no longer need grid spans */
+  .photo-card.wide .img { aspect-ratio: 16 / 9; }
+  .photo-card.tall .img { aspect-ratio: 3 / 4; }
 
   /* Lightbox */
   .lightbox {
@@ -1322,11 +1386,18 @@ Quick reference for what to change in this file.
      ============================================================ */
   .wishes-section { background: var(--ivory); }
   .wishes {
-    columns: 3 280px;
-    column-gap: 22px;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  .wishes .carousel-track {
+    align-items: stretch;
+  }
+  .wishes .carousel-track .wish {
+    flex: 0 0 100%;
+    min-width: 0;
+    margin-bottom: 0;
   }
   .wish {
-    break-inside: avoid;
     background: #fff;
     border: var(--border-gold);
     border-radius: 8px;
@@ -1630,23 +1701,24 @@ Quick reference for what to change in this file.
       <p class="subtitle">A few of the places, days, and stories we've collected along the way.</p>
     </div>
 
-    <!-- Photos live in assets/photos/gallery/ (see assets/README.md).
-         If a file is missing, the gradient + SVG fallback stays visible.
-         Two landscape photos use .wide (span 2 cols); one portrait uses .tall. -->
-    <div class="gallery" id="gallery-grid">
-      <div class="photo-card tall" data-caption="Adiyogi · Coimbatore"><div class="img pc-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l4 6h-3l4 7H7l4-7H8z"/></svg><img src="assets/photos/gallery/01-adiyogi-shiva.jpg" alt="Adiyogi Shiva statue, Coimbatore" loading="lazy" onerror="this.remove()"></div><div class="caption">Adiyogi · Coimbatore</div></div>
-
-      <div class="photo-card wide" data-caption="Wayanad Dam · Kerala"><div class="img pc-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg><img src="assets/photos/gallery/02-wayanad-dam.jpg" alt="Wayanad Dam, Kerala" loading="lazy" onerror="this.remove()"></div><div class="caption">Wayanad Dam · Kerala</div></div>
-
-      <div class="photo-card wide" data-caption="Jatayu Earth's Center · Kerala"><div class="img pc-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l5-12 4 8 3-5 4 6 4-4v7z"/></svg><img src="assets/photos/gallery/04-jatayu.jpg" alt="Jatayu Earth's Center, Kerala" loading="lazy" onerror="this.remove()"></div><div class="caption">Jatayu Earth's Center · Kerala</div></div>
-
-      <div class="photo-card" data-caption="Edakal Caves · Wayanad"><div class="img pc-5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l6-10 4 6 4-7 4 11z"/></svg><img src="assets/photos/gallery/05-edakal-caves.jpg" alt="Edakal Caves, Wayanad" loading="lazy" onerror="this.remove()"></div><div class="caption">Edakal Caves · Wayanad</div></div>
-
-      <div class="photo-card" data-caption="Wayanad · Zipline"><div class="img pc-6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l18 12"/><circle cx="12" cy="12" r="2"/></svg><img src="assets/photos/gallery/06-wayanad-zipline.jpg" alt="Wayanad Zipline" loading="lazy" onerror="this.remove()"></div><div class="caption">Wayanad · Zipline</div></div>
-
-      <div class="photo-card" data-caption="Uru · Bengaluru"><div class="img pc-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11a5 5 0 0 1 10 0v4H7z"/><path d="M5 15h14l-2 5H7z"/></svg><img src="assets/photos/gallery/09-uru.jpg" alt="Uru, Bengaluru" loading="lazy" onerror="this.remove()"></div><div class="caption">Uru · Bengaluru</div></div>
-
-
+    <div class="carousel-wrap" style="padding: 0 28px;">
+      <button class="carousel-btn prev" id="gallery-prev" aria-label="Previous photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="gallery" id="gallery-grid">
+        <div class="carousel-track" id="gallery-track">
+          <div class="photo-card tall"><div class="img pc-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l4 6h-3l4 7H7l4-7H8z"/></svg><img src="assets/photos/gallery/01-adiyogi-shiva.jpg" alt="Adiyogi Shiva statue, Coimbatore" loading="lazy" onerror="this.remove()"></div><div class="caption">Adiyogi · Coimbatore</div></div>
+          <div class="photo-card wide"><div class="img pc-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg><img src="assets/photos/gallery/02-wayanad-dam.jpg" alt="Wayanad Dam, Kerala" loading="lazy" onerror="this.remove()"></div><div class="caption">Wayanad Dam · Kerala</div></div>
+          <div class="photo-card wide"><div class="img pc-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l5-12 4 8 3-5 4 6 4-4v7z"/></svg><img src="assets/photos/gallery/04-jatayu.jpg" alt="Jatayu Earth's Center, Kerala" loading="lazy" onerror="this.remove()"></div><div class="caption">Jatayu Earth's Center · Kerala</div></div>
+          <div class="photo-card"><div class="img pc-5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l6-10 4 6 4-7 4 11z"/></svg><img src="assets/photos/gallery/05-edakal-caves.jpg" alt="Edakal Caves, Wayanad" loading="lazy" onerror="this.remove()"></div><div class="caption">Edakal Caves · Wayanad</div></div>
+          <div class="photo-card"><div class="img pc-6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l18 12"/><circle cx="12" cy="12" r="2"/></svg><img src="assets/photos/gallery/06-wayanad-zipline.jpg" alt="Wayanad Zipline" loading="lazy" onerror="this.remove()"></div><div class="caption">Wayanad · Zipline</div></div>
+          <div class="photo-card"><div class="img pc-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11a5 5 0 0 1 10 0v4H7z"/><path d="M5 15h14l-2 5H7z"/></svg><img src="assets/photos/gallery/09-uru.jpg" alt="Uru, Bengaluru" loading="lazy" onerror="this.remove()"></div><div class="caption">Uru · Bengaluru</div></div>
+        </div>
+      </div>
+      <button class="carousel-btn next" id="gallery-next" aria-label="Next photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="carousel-dots" id="gallery-dots"></div>
     </div>
   </div>
 </section>
@@ -1866,8 +1938,19 @@ Quick reference for what to change in this file.
       <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-5-7-11a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 6-7 11-7 11z"/></svg></div>
     </div>
 
-    <div class="wishes" id="wishes-list">
-      <!-- populated by JS -->
+    <div class="carousel-wrap" style="padding: 0 28px;">
+      <button class="carousel-btn prev" id="wishes-prev" aria-label="Previous wish">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="wishes">
+        <div class="carousel-track" id="wishes-list">
+          <!-- populated by JS -->
+        </div>
+      </div>
+      <button class="carousel-btn next" id="wishes-next" aria-label="Next wish">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="carousel-dots" id="wishes-dots"></div>
     </div>
   </div>
 </section>
@@ -2166,11 +2249,68 @@ Quick reference for what to change in this file.
       + '</div>';
   }
 
+  // ============================================================
+  // CAROUSEL
+  // ============================================================
+  function initCarousel(trackId, prevId, nextId, dotsId) {
+    var track = document.getElementById(trackId);
+    var prevBtn = document.getElementById(prevId);
+    var nextBtn = document.getElementById(nextId);
+    var dotsEl  = dotsId ? document.getElementById(dotsId) : null;
+    if (!track || !prevBtn || !nextBtn) return;
+
+    var items = track.children;
+    var total = items.length;
+    var idx = 0;
+
+    function buildDots() {
+      if (!dotsEl) return;
+      dotsEl.innerHTML = '';
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('span');
+        if (i === idx) dot.classList.add('active');
+        (function(i) {
+          dot.addEventListener('click', function() { goTo(i); });
+        })(i);
+        dotsEl.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      if (!dotsEl) return;
+      var dots = dotsEl.querySelectorAll('span');
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+    }
+
+    function goTo(n) {
+      idx = (n + total) % total;
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      updateDots();
+    }
+
+    buildDots();
+    track.style.transform = 'translateX(0)';
+    prevBtn.addEventListener('click', function() { goTo(idx - 1); });
+    nextBtn.addEventListener('click', function() { goTo(idx + 1); });
+
+    // Touch/swipe support
+    var startX = 0;
+    track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) goTo(dx < 0 ? idx + 1 : idx - 1);
+    }, { passive: true });
+  }
+
+  // Init gallery carousel
+  initCarousel('gallery-track', 'gallery-prev', 'gallery-next', 'gallery-dots');
+
   var liveWishes = SAMPLE_WISHES.slice();
   var wishesList = document.getElementById('wishes-list');
 
   function renderWishes() {
     wishesList.innerHTML = liveWishes.map(wishCard).join('');
+    initCarousel('wishes-list', 'wishes-prev', 'wishes-next', 'wishes-dots');
   }
   renderWishes();
 
