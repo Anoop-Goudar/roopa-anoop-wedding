@@ -1422,7 +1422,7 @@ Quick reference for what to change in this file.
         <h3>Reception</h3>
         <div class="kn-sub" style="margin: -4px 0 10px; font-size: 1.1rem;">ಆರತಕ್ಷತೆ</div>
         <div class="when">Wednesday, 8 July 2026</div>
-        <div class="time">7:00 PM onwards</div>
+        <div class="time">7:15 PM onwards</div>
         <div class="venue">
           Sapthapadi Palace &amp; Sapthagiri Palace<br/>
           First Floor, Bengaluru
@@ -1736,7 +1736,7 @@ Quick reference for what to change in this file.
     Our Song
   </span>
   <!-- REPLACE-MUSIC-SRC: default path is assets/music/our-song.mp3 (see assets/README.md). -->
-  <audio id="our-audio" preload="metadata" loop src="assets/music/our-song.mp3"></audio>
+  <audio id="our-audio" preload="metadata" src="assets/music/our-song.mp3"></audio>
 </div>
 
 
@@ -2088,29 +2088,32 @@ Quick reference for what to change in this file.
   // interacts with the page. If blocked, start on first interaction
   // anywhere — but skip clicks on the player button itself, since
   // its own handler already toggles playback.
-  startPlaying().then(function (ok) {
-    if (ok) return;
-    player.classList.add('awaiting'); // gentle pulse hint
-    var cleanup = function () {
-      window.removeEventListener('click',      kickoff, true);
-      window.removeEventListener('touchstart', kickoff, true);
-      window.removeEventListener('keydown',    kickoff, true);
-      window.removeEventListener('scroll',     kickoff, true);
-      player.classList.remove('awaiting');
-    };
-    var kickoff = function (e) {
-      if (e && e.target && (e.target === playBtn || playBtn.contains(e.target))) {
+  // Auto-start after 2 s; if browser blocks autoplay, try on first interaction
+  setTimeout(function () {
+    startPlaying().then(function (ok) {
+      if (ok) return;
+      player.classList.add('awaiting');
+      var cleanup = function () {
+        window.removeEventListener('click',      kickoff, true);
+        window.removeEventListener('touchstart', kickoff, true);
+        window.removeEventListener('keydown',    kickoff, true);
+        window.removeEventListener('scroll',     kickoff, true);
+        player.classList.remove('awaiting');
+      };
+      var kickoff = function (e) {
+        if (e && e.target && (e.target === playBtn || playBtn.contains(e.target))) {
+          cleanup();
+          return;
+        }
+        startPlaying();
         cleanup();
-        return;
-      }
-      startPlaying();
-      cleanup();
-    };
-    window.addEventListener('click',      kickoff, true);
-    window.addEventListener('touchstart', kickoff, true);
-    window.addEventListener('keydown',    kickoff, true);
-    window.addEventListener('scroll',     kickoff, true);
-  });
+      };
+      window.addEventListener('click',      kickoff, true);
+      window.addEventListener('touchstart', kickoff, true);
+      window.addEventListener('keydown',    kickoff, true);
+      window.addEventListener('scroll',     kickoff, true);
+    });
+  }, 2000);
 
 
   // ── Unmute button for autoplay video ─────────────────────
@@ -2137,6 +2140,11 @@ Quick reference for what to change in this file.
       });
       vid.removeEventListener('canplay', tryAutoSound);
     }, { once: true });
+
+    // Reset to poster thumbnail when video finishes
+    vid.addEventListener('ended', function () {
+      vid.load(); // resets to poster without replaying
+    });
   }());
 
 })();
