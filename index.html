@@ -2309,6 +2309,20 @@ Quick reference for what to change in this file.
   var wishesList = document.getElementById('wishes-list');
 
   function renderWishes() {
+    if (liveWishes.length === 0) {
+      wishesList.innerHTML = '<div class="wish wish-empty">'
+        + '<span class="floral" aria-hidden="true">' + FLORAL_SVG + '</span>'
+        + '<p>Be the first one to wish the couple!</p>'
+        + '<div class="author">— Fill the RSVP form below to leave your wishes</div>'
+        + '</div>';
+      document.getElementById('wishes-prev').style.display = 'none';
+      document.getElementById('wishes-next').style.display = 'none';
+      document.getElementById('wishes-dots').style.display = 'none';
+      return;
+    }
+    document.getElementById('wishes-prev').style.display = '';
+    document.getElementById('wishes-next').style.display = '';
+    document.getElementById('wishes-dots').style.display = '';
     wishesList.innerHTML = liveWishes.map(wishCard).join('');
     initCarousel('wishes-list', 'wishes-prev', 'wishes-next', 'wishes-dots');
   }
