@@ -537,6 +537,20 @@ Quick reference for what to change in this file.
     max-width: 900px;
   }
 
+  .hero .ganesh-icon {
+    display: block;
+    margin: 0 auto 14px;
+    width: 52px;
+    height: 52px;
+    color: var(--gold-deep);
+    opacity: 0;
+    animation: fadeUp 1.4s ease 0s forwards;
+    filter: drop-shadow(0 2px 6px rgba(139, 94, 46, 0.18));
+  }
+  [data-theme="pastel"] .hero .ganesh-icon {
+    color: #A07848;
+    filter: drop-shadow(0 2px 8px rgba(160, 120, 72, 0.22));
+  }
   .hero .blessing {
     font-family: var(--sans);
     text-transform: uppercase;
@@ -1607,6 +1621,29 @@ Quick reference for what to change in this file.
   </div>
 
   <div class="hero-inner">
+    <svg class="ganesh-icon" viewBox="0 0 64 72" xmlns="http://www.w3.org/2000/svg" aria-label="Ganesha" role="img">
+      <!-- Crown -->
+      <path d="M22 14 L26 6 L32 11 L38 6 L42 14" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- Left ear (large, fan-like) -->
+      <ellipse cx="11" cy="38" rx="10" ry="14" fill="currentColor" opacity="0.45"/>
+      <ellipse cx="11" cy="38" rx="5.5" ry="8" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+      <!-- Right ear -->
+      <ellipse cx="53" cy="38" rx="10" ry="14" fill="currentColor" opacity="0.45"/>
+      <ellipse cx="53" cy="38" rx="5.5" ry="8" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+      <!-- Head -->
+      <circle cx="32" cy="36" r="20" fill="currentColor"/>
+      <!-- Third eye / tilak -->
+      <ellipse cx="32" cy="24" rx="2.5" ry="3.2" fill="white" opacity="0.75"/>
+      <!-- Eyes -->
+      <circle cx="24.5" cy="33" r="3" fill="white"/>
+      <circle cx="39.5" cy="33" r="3" fill="white"/>
+      <circle cx="24.5" cy="33.5" r="1.4" fill="currentColor"/>
+      <circle cx="39.5" cy="33.5" r="1.4" fill="currentColor"/>
+      <!-- Trunk curling to left (auspicious) -->
+      <path d="M32 48 C27 55 21 57 19 63 C17 68 22 72 27 69" stroke="currentColor" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Modak / sweet at trunk tip -->
+      <circle cx="27" cy="69" r="3" fill="currentColor"/>
+    </svg>
     <div class="blessing">‖ Shree Ganeshaya Namah ‖</div>
     <div class="blessing kn">|| ಶುಭ ವಿವಾಹ ||</div>
 
