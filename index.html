@@ -1431,12 +1431,17 @@ Quick reference for what to change in this file.
   .wishes {
     overflow: hidden;
     border-radius: 12px;
+    width: 100%;
   }
   .wishes .carousel-track {
+    display: flex;
+    flex-wrap: nowrap;
     align-items: stretch;
+    width: 100%;
   }
   .wishes .carousel-track .wish {
     flex: 0 0 100%;
+    width: 100%;
     min-width: 0;
     margin-bottom: 0;
     text-align: center;
@@ -1444,9 +1449,11 @@ Quick reference for what to change in this file.
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
   }
   .wishes .carousel-track .wish p {
     padding-right: 0;
+    max-width: 600px;
   }
   .wishes .carousel-track .wish .floral {
     position: static;
@@ -2298,10 +2305,10 @@ Quick reference for what to change in this file.
   }
 
   function wishCard(w) {
-    return '<div class=”wish”>'
-      + '<span class=”floral” aria-hidden=”true”>' + FLORAL_SVG + '</span>'
-      + '<p>”' + escapeHtml(w.message) + '”</p>'
-      + '<div class=”author”>— ' + escapeHtml(w.name) + '</div>'
+    return '<div class="wish">'
+      + '<span class="floral" aria-hidden="true">' + FLORAL_SVG + '</span>'
+      + '<p>"' + escapeHtml(w.message) + '"</p>'
+      + '<div class="author">— ' + escapeHtml(w.name) + '</div>'
       + '</div>';
   }
 
@@ -2338,14 +2345,28 @@ Quick reference for what to change in this file.
       dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
     }
 
+    function getItemWidth() {
+      return track.offsetWidth;
+    }
+
+    function setSizes() {
+      var w = getItemWidth();
+      for (var i = 0; i < total; i++) {
+        items[i].style.width = w + 'px';
+        items[i].style.flexShrink = '0';
+      }
+    }
+
     function goTo(n) {
       idx = (n + total) % total;
-      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      track.style.transform = 'translateX(-' + (idx * getItemWidth()) + 'px)';
       updateDots();
     }
 
+    setSizes();
     buildDots();
     track.style.transform = 'translateX(0)';
+    window.addEventListener('resize', function() { setSizes(); goTo(idx); });
     prevBtn.addEventListener('click', function() { goTo(idx - 1); });
     nextBtn.addEventListener('click', function() { goTo(idx + 1); });
 
