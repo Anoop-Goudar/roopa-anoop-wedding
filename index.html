@@ -2085,6 +2085,17 @@ Quick reference for what to change in this file.
   audio.addEventListener('pause',   function () { setPlayingUI(false); });
   audio.addEventListener('playing', function () { setPlayingUI(true); });
 
+  // Pause when user leaves the tab/app; resume when they return
+  var wasPlayingBeforeHide = false;
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      wasPlayingBeforeHide = !audio.paused;
+      if (wasPlayingBeforeHide) audio.pause();
+    } else {
+      if (wasPlayingBeforeHide) startPlaying();
+    }
+  });
+
   // Try to autoplay. Most browsers will block this until the user
   // interacts with the page. If blocked, start on first interaction
   // anywhere — but skip clicks on the player button itself, since
