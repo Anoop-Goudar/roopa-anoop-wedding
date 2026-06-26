@@ -540,8 +540,8 @@ Quick reference for what to change in this file.
   .hero .ganesh-icon {
     display: block;
     margin: 0 auto 14px;
-    width: 52px;
-    height: 52px;
+    width: 72px;
+    height: 90px;
     color: var(--gold-deep);
     opacity: 0;
     animation: fadeUp 1.4s ease 0s forwards;
@@ -1621,28 +1621,91 @@ Quick reference for what to change in this file.
   </div>
 
   <div class="hero-inner">
-    <svg class="ganesh-icon" viewBox="0 0 64 72" xmlns="http://www.w3.org/2000/svg" aria-label="Ganesha" role="img">
-      <!-- Crown -->
-      <path d="M22 14 L26 6 L32 11 L38 6 L42 14" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-      <!-- Left ear (large, fan-like) -->
-      <ellipse cx="11" cy="38" rx="10" ry="14" fill="currentColor" opacity="0.45"/>
-      <ellipse cx="11" cy="38" rx="5.5" ry="8" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+    <svg class="ganesh-icon" viewBox="0 0 100 134" xmlns="http://www.w3.org/2000/svg" aria-label="Ganesha" role="img">
+      <!-- Lotus seat petals -->
+      <path d="M24 124 Q32 114 50 116 Q68 114 76 124 Q68 130 50 132 Q32 130 24 124Z" fill="currentColor" opacity="0.35"/>
+      <ellipse cx="50" cy="126" rx="30" ry="6" fill="currentColor" opacity="0.2"/>
+
+      <!-- Legs (padmasana / seated) -->
+      <ellipse cx="50" cy="116" rx="24" ry="10" fill="currentColor"/>
+      <ellipse cx="29" cy="119" rx="9" ry="5" fill="currentColor"/>
+      <ellipse cx="71" cy="119" rx="9" ry="5" fill="currentColor"/>
+
+      <!-- Body (lambodara – large belly) -->
+      <ellipse cx="50" cy="94" rx="22" ry="24" fill="currentColor"/>
+      <circle cx="50" cy="99" r="3" fill="none" stroke="white" stroke-width="1.2" opacity="0.55"/>
+
+      <!-- Upper right arm (raised, holding broken tusk) -->
+      <path d="M70 80 C78 70 82 60 78 52" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <line x1="78" y1="52" x2="86" y2="42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <!-- Upper left arm (raised, holding lotus) -->
+      <path d="M30 80 C22 70 18 60 22 52" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <circle cx="20" cy="48" r="5" fill="currentColor"/>
+      <path d="M15 52 Q20 44 25 52" fill="currentColor"/>
+
+      <!-- Lower right arm (holding modak) -->
+      <path d="M68 94 C74 102 73 110 70 114" stroke="currentColor" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="69" cy="117" rx="6" ry="7" fill="currentColor"/>
+      <!-- Lower left arm (varada mudra / open palm) -->
+      <path d="M32 94 C26 102 27 110 30 114" stroke="currentColor" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="29" cy="116" rx="6" ry="5" fill="currentColor"/>
+
+      <!-- Neck -->
+      <rect x="43" y="70" width="14" height="10" rx="5" fill="currentColor"/>
+
+      <!-- Left ear (large, fan-shaped) -->
+      <ellipse cx="13" cy="44" rx="13" ry="21" fill="currentColor" opacity="0.5"/>
+      <ellipse cx="13" cy="44" rx="7" ry="13" fill="none" stroke="white" stroke-width="1" opacity="0.5"/>
+      <ellipse cx="13" cy="44" rx="3" ry="6" fill="none" stroke="white" stroke-width="0.8" opacity="0.35"/>
+
       <!-- Right ear -->
-      <ellipse cx="53" cy="38" rx="10" ry="14" fill="currentColor" opacity="0.45"/>
-      <ellipse cx="53" cy="38" rx="5.5" ry="8" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+      <ellipse cx="87" cy="44" rx="13" ry="21" fill="currentColor" opacity="0.5"/>
+      <ellipse cx="87" cy="44" rx="7" ry="13" fill="none" stroke="white" stroke-width="1" opacity="0.5"/>
+      <ellipse cx="87" cy="44" rx="3" ry="6" fill="none" stroke="white" stroke-width="0.8" opacity="0.35"/>
+
       <!-- Head -->
-      <circle cx="32" cy="36" r="20" fill="currentColor"/>
-      <!-- Third eye / tilak -->
-      <ellipse cx="32" cy="24" rx="2.5" ry="3.2" fill="white" opacity="0.75"/>
-      <!-- Eyes -->
-      <circle cx="24.5" cy="33" r="3" fill="white"/>
-      <circle cx="39.5" cy="33" r="3" fill="white"/>
-      <circle cx="24.5" cy="33.5" r="1.4" fill="currentColor"/>
-      <circle cx="39.5" cy="33.5" r="1.4" fill="currentColor"/>
-      <!-- Trunk curling to left (auspicious) -->
-      <path d="M32 48 C27 55 21 57 19 63 C17 68 22 72 27 69" stroke="currentColor" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- Modak / sweet at trunk tip -->
-      <circle cx="27" cy="69" r="3" fill="currentColor"/>
+      <ellipse cx="50" cy="42" rx="26" ry="28" fill="currentColor"/>
+
+      <!-- Crown / mukut (traditional tiered crown) -->
+      <rect x="30" y="15" width="40" height="6" rx="3" fill="currentColor"/>
+      <rect x="34" y="9" width="32" height="7" rx="3" fill="currentColor"/>
+      <rect x="38" y="3" width="24" height="7" rx="3" fill="currentColor"/>
+      <!-- Crown peak -->
+      <path d="M46 3 L50 -3 L54 3Z" fill="currentColor"/>
+      <!-- Crown side gems -->
+      <circle cx="33" cy="12" r="2.5" fill="white" opacity="0.6"/>
+      <circle cx="67" cy="12" r="2.5" fill="white" opacity="0.6"/>
+      <circle cx="50" cy="6" r="2.5" fill="white" opacity="0.6"/>
+
+      <!-- Tilak / third eye -->
+      <ellipse cx="50" cy="27" rx="3" ry="4" fill="white" opacity="0.8"/>
+
+      <!-- Eyes (large, expressive) -->
+      <ellipse cx="39" cy="37" rx="5" ry="4.5" fill="white"/>
+      <ellipse cx="61" cy="37" rx="5" ry="4.5" fill="white"/>
+      <circle cx="39.5" cy="37.5" r="2.5" fill="currentColor"/>
+      <circle cx="61.5" cy="37.5" r="2.5" fill="currentColor"/>
+      <circle cx="40" cy="37" r="1" fill="white"/>
+      <circle cx="62" cy="37" r="1" fill="white"/>
+      <!-- Brows -->
+      <path d="M34 32 Q39 30 44 32" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+      <path d="M56 32 Q61 30 66 32" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+
+      <!-- Full left tusk -->
+      <path d="M37 55 Q30 63 28 73" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Broken right tusk (shorter) -->
+      <path d="M63 55 Q70 62 72 68" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <line x1="72" y1="68" x2="68" y2="72" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- Trunk (long, curling left — auspicious) -->
+      <path d="M50 58 C44 66 40 72 36 80 C32 88 34 96 40 96 C44 97 46 93 44 89" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+      <!-- Garland hint -->
+      <path d="M38 78 Q50 86 62 78" fill="none" stroke="white" stroke-width="1.5" stroke-dasharray="2 3" opacity="0.5"/>
+
+      <!-- Earrings -->
+      <circle cx="27" cy="52" r="3" fill="none" stroke="white" stroke-width="1.2" opacity="0.55"/>
+      <circle cx="73" cy="52" r="3" fill="none" stroke="white" stroke-width="1.2" opacity="0.55"/>
     </svg>
     <div class="blessing">‖ Shree Ganeshaya Namah ‖</div>
     <div class="blessing kn">|| ಶುಭ ವಿವಾಹ ||</div>
