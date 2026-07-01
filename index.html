@@ -1933,9 +1933,9 @@ Quick reference for what to change in this file.
         <input type="text" id="rsvp-name" name="name" required autocomplete="name" />
       </div>
 
-      <div class="field" style="display:none">
+      <div class="field">
         <label for="rsvp-email">Email</label>
-        <input type="email" id="rsvp-email" name="email" autocomplete="email" />
+        <input type="email" id="rsvp-email" name="email" required autocomplete="email" />
       </div>
 
       <div class="field" style="display:none">
@@ -1964,8 +1964,8 @@ Quick reference for what to change in this file.
       </div>
 
       <div class="field">
-        <label for="rsvp-message">Warm Wishes / Message (optional)</label>
-        <textarea id="rsvp-message" name="message" placeholder="Send us a little note..."></textarea>
+        <label for="rsvp-message">Warm Wishes / Message</label>
+        <textarea id="rsvp-message" name="message" required placeholder="Send us a little note..."></textarea>
         <p style="margin: 8px 0 0; font-size: 0.85rem; color: var(--charcoal-soft); font-style: italic;">Your message will appear in the Wishes Wall below.</p>
       </div>
 
@@ -2453,13 +2453,14 @@ Quick reference for what to change in this file.
   rsvpForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var name    = rsvpForm.querySelector('#rsvp-name').value.trim();
+    var email   = rsvpForm.querySelector('#rsvp-email').value.trim();
     var message = rsvpForm.querySelector('#rsvp-message').value.trim();
 
-    if (!name || !message) { rsvpForm.reportValidity(); return; }
+    if (!name || !email || !message) { rsvpForm.reportValidity(); return; }
 
     var body = new URLSearchParams();
     body.append(ENTRY.name,      name);
-    body.append(ENTRY.email,     'guest@wedding.rsvp');
+    body.append(ENTRY.email,     email);
     body.append(ENTRY.attending, 'Both');
     body.append(ENTRY.guests,    'Just me');
     body.append(ENTRY.message,   message);
