@@ -1927,6 +1927,10 @@ Quick reference for what to change in this file.
     </div>
 
     <form class="rsvp-form" id="rsvp-form" novalidate>
+      <input type="hidden" id="rsvp-email" name="email" value="" />
+      <input type="hidden" id="rsvp-attending" name="attending" value="Coming" />
+      <input type="hidden" id="rsvp-guests" name="guests" value="Just me" />
+
       <div class="field">
         <label for="rsvp-name">Your Name</label>
         <input type="text" id="rsvp-name" name="name" required autocomplete="name" placeholder="Enter your name" />
@@ -2408,8 +2412,11 @@ Quick reference for what to change in this file.
   // ============================================================
   const GFORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScssg_X641EHUL80qq-7i0aZN4yXJdZOim8xUB-32EG6Zd_4w/formResponse';
   const ENTRY = {
-    name:    'entry.1145137192',
-    message: 'entry.426639135',
+    name:     'entry.1145137192',
+    email:    'entry.854653814',
+    attending:'entry.85512520',
+    guests:   'entry.1947648271',
+    message:  'entry.426639135',
   };
 
   var rsvpForm = document.getElementById('rsvp-form');
@@ -2423,8 +2430,11 @@ Quick reference for what to change in this file.
     if (!name || !message) { rsvpForm.reportValidity(); return; }
 
     var body = new URLSearchParams();
-    body.append(ENTRY.name,    name);
-    body.append(ENTRY.message, message);
+    body.append(ENTRY.name,      name);
+    body.append(ENTRY.email,     '');
+    body.append(ENTRY.attending, 'Coming');
+    body.append(ENTRY.guests,    'Just me');
+    body.append(ENTRY.message,   message);
     fetch(GFORM_ACTION, { method: 'POST', mode: 'no-cors', body: body });
 
     liveWishes = [{ name: name, message: message }].concat(liveWishes);
