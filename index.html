@@ -1915,6 +1915,48 @@ Quick reference for what to change in this file.
 
 
 <!-- ============================================================
+     9. WISHES FORM
+     ============================================================ -->
+<section class="rsvp-section" id="rsvp">
+  <div class="container reveal">
+    <div class="section-heading">
+      <div class="eyebrow">Leave a Note</div>
+      <h2>Send Your Wishes</h2>
+      <div class="kn-sub">ಶುಭಾಶಯ ತಿಳಿಸಿ</div>
+      <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-5-7-11a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 6-7 11-7 11z"/></svg></div>
+    </div>
+
+    <form class="rsvp-form" id="rsvp-form" novalidate>
+      <div class="field">
+        <label for="rsvp-name">Your Name</label>
+        <input type="text" id="rsvp-name" name="name" required autocomplete="name" placeholder="Enter your name" />
+      </div>
+
+      <div class="field">
+        <label for="rsvp-message">Warm Wishes / Message</label>
+        <textarea id="rsvp-message" name="message" required placeholder="Send the couple a little note..."></textarea>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Send Wishes
+        </button>
+      </div>
+    </form>
+
+    <div class="thanks" id="thanks">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h3>Thank You!</h3>
+      <p>Your wishes mean the world to us. 💕</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
      10. WISHES WALL
      ============================================================ -->
 <section class="wishes-section" id="wishes">
@@ -2359,6 +2401,44 @@ Quick reference for what to change in this file.
   }());
 
 
+
+
+  // ============================================================
+  // Wishes form — submits name + message to Google Forms
+  // ============================================================
+  const GFORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScssg_X641EHUL80qq-7i0aZN4yXJdZOim8xUB-32EG6Zd_4w/formResponse';
+  const ENTRY = {
+    name:    'entry.1145137192',
+    message: 'entry.426639135',
+  };
+
+  var rsvpForm = document.getElementById('rsvp-form');
+  var thanks   = document.getElementById('thanks');
+
+  rsvpForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name    = rsvpForm.querySelector('#rsvp-name').value.trim();
+    var message = rsvpForm.querySelector('#rsvp-message').value.trim();
+
+    if (!name || !message) { rsvpForm.reportValidity(); return; }
+
+    var body = new URLSearchParams();
+    body.append(ENTRY.name,    name);
+    body.append(ENTRY.message, message);
+    fetch(GFORM_ACTION, { method: 'POST', mode: 'no-cors', body: body });
+
+    liveWishes = [{ name: name, message: message }].concat(liveWishes);
+    renderWishes();
+
+    rsvpForm.style.transition = 'opacity .35s ease, transform .35s ease';
+    rsvpForm.style.opacity = '0';
+    rsvpForm.style.transform = 'scale(.96)';
+    setTimeout(function () {
+      rsvpForm.style.display = 'none';
+      thanks.style.display = 'block';
+      requestAnimationFrame(function () { thanks.classList.add('show'); });
+    }, 360);
+  });
 
 
   // ============================================================
