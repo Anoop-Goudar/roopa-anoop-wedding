@@ -2084,7 +2084,7 @@ Quick reference for what to change in this file.
       label.textContent = 'Pastel';
     }
   }
-  apply(localStorage.getItem('wedding-theme') || '');
+  apply(localStorage.getItem('wedding-theme') || 'pastel');
   btn.addEventListener('click', function () {
     var next = document.documentElement.getAttribute('data-theme') === PASTEL ? '' : PASTEL;
     localStorage.setItem('wedding-theme', next);
