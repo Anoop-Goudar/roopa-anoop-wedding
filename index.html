@@ -2459,8 +2459,8 @@ Quick reference for what to change in this file.
 
     var body = new URLSearchParams();
     body.append(ENTRY.name,      name);
-    body.append(ENTRY.email,     '');
-    body.append(ENTRY.attending, 'Coming');
+    body.append(ENTRY.email,     'guest@wedding.rsvp');
+    body.append(ENTRY.attending, 'Both');
     body.append(ENTRY.guests,    'Just me');
     body.append(ENTRY.message,   message);
     fetch(GFORM_ACTION, { method: 'POST', mode: 'no-cors', body: body });
