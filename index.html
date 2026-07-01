@@ -1915,36 +1915,64 @@ Quick reference for what to change in this file.
 
 
 <!-- ============================================================
-     9. WISHES FORM
+     9. RSVP
      ============================================================ -->
 <section class="rsvp-section" id="rsvp">
   <div class="container reveal">
     <div class="section-heading">
-      <div class="eyebrow">Leave a Note</div>
-      <h2>Send Your Wishes</h2>
-      <div class="kn-sub">ಶುಭಾಶಯ ತಿಳಿಸಿ</div>
-      <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-5-7-11a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 6-7 11-7 11z"/></svg></div>
+      <div class="eyebrow">Save Your Seat</div>
+      <h2>RSVP</h2>
+      <div class="kn-sub">ನಿಮ್ಮ ಆಗಮನ ನಮ್ಮ ಭಾಗ್ಯ</div>
+      <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 6l8 6 8-6"/></svg></div>
+      <p class="subtitle">Please let us know if you'll be joining us. Your presence means the world.</p>
     </div>
 
     <form class="rsvp-form" id="rsvp-form" novalidate>
-      <input type="hidden" id="rsvp-email" name="email" value="" />
-      <input type="hidden" id="rsvp-attending" name="attending" value="Coming" />
-      <input type="hidden" id="rsvp-guests" name="guests" value="Just me" />
-
       <div class="field">
-        <label for="rsvp-name">Your Name</label>
-        <input type="text" id="rsvp-name" name="name" required autocomplete="name" placeholder="Enter your name" />
+        <label for="rsvp-name">Full Name</label>
+        <input type="text" id="rsvp-name" name="name" required autocomplete="name" />
+      </div>
+
+      <div class="field" style="display:none">
+        <label for="rsvp-email">Email</label>
+        <input type="email" id="rsvp-email" name="email" autocomplete="email" />
+      </div>
+
+      <div class="field" style="display:none">
+        <label>Attending</label>
+        <div class="pillgroup" role="radiogroup" aria-label="Attending">
+          <input type="radio" id="att-reception" name="attending" value="Reception only (8 July)" />
+          <label for="att-reception">Reception only</label>
+          <input type="radio" id="att-wedding" name="attending" value="Wedding only (9 July)" />
+          <label for="att-wedding">Wedding only</label>
+          <input type="radio" id="att-both" name="attending" value="Both" checked />
+          <label for="att-both">Both</label>
+          <input type="radio" id="att-none" name="attending" value="Unable to attend" />
+          <label for="att-none">Unable to attend</label>
+        </div>
+      </div>
+
+      <div class="field" style="display:none">
+        <label for="rsvp-guests">Number of Guests (including yourself)</label>
+        <select id="rsvp-guests" name="guests">
+          <option value="Just me">Just me</option>
+          <option value="+1">+1</option>
+          <option value="+2">+2</option>
+          <option value="+3">+3</option>
+          <option value="+4">+4</option>
+        </select>
       </div>
 
       <div class="field">
-        <label for="rsvp-message">Warm Wishes / Message</label>
-        <textarea id="rsvp-message" name="message" required placeholder="Send the couple a little note..."></textarea>
+        <label for="rsvp-message">Warm Wishes / Message (optional)</label>
+        <textarea id="rsvp-message" name="message" placeholder="Send us a little note..."></textarea>
+        <p style="margin: 8px 0 0; font-size: 0.85rem; color: var(--charcoal-soft); font-style: italic;">Your message will appear in the Wishes Wall below.</p>
       </div>
 
       <div class="submit-wrap">
         <button type="submit" class="btn btn-primary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          Send Wishes
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          Send RSVP
         </button>
       </div>
     </form>
@@ -1954,7 +1982,7 @@ Quick reference for what to change in this file.
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       </div>
       <h3>Thank You!</h3>
-      <p>Your wishes mean the world to us. 💕</p>
+      <p>Your RSVP has been received. We can't wait to celebrate with you.</p>
     </div>
   </div>
 </section>
